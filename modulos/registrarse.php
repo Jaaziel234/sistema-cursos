@@ -1,0 +1,7 @@
+<?php
+//Recibir datos
+
+
+
+
+?>
