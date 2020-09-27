@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-09-2020 a las 16:16:30
+-- Tiempo de generación: 27-09-2020 a las 22:26:01
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.29
 
@@ -59,7 +59,9 @@ CREATE TABLE `carrera` (
 --
 
 INSERT INTO `carrera` (`Id`, `Nombre`) VALUES
-(1, 'Computacion');
+(1, 'Computacion'),
+(8, 'Ingeniería mecanica'),
+(9, 'Licenciatura en computacion');
 
 -- --------------------------------------------------------
 
@@ -85,10 +87,17 @@ CREATE TABLE `contenido` (
   `Temas` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `CantidadVideos` tinyint(4) NOT NULL,
   `DuracionVideo` decimal(50,0) NOT NULL,
+  `Video` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contenido`
+--
+
+INSERT INTO `contenido` (`Id`, `Temas`, `Nombre`, `Descripcion`, `DuracionVideo`, `Video`, `Id_Curso`) VALUES
+(22, 'Introduccion a PHP', 'Introducción al curso', 'Instalacion y conceptos antes de iniciar a program', '1', '1601238165_SistemaDeCursos.mp4', 31);
 
 -- --------------------------------------------------------
 
@@ -100,7 +109,7 @@ CREATE TABLE `curso` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Fecha` date DEFAULT current_timestamp(),
   `DuracionCurso` int(11) NOT NULL,
   `Precio` decimal(11,0) NOT NULL,
   `Imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -113,7 +122,7 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`Id`, `Nombre`, `Descripcion`, `Fecha`, `DuracionCurso`, `Precio`, `Imagen`, `Id_Docente`, `Id_Carrera`) VALUES
-(1, 'Bases de datos', 'Aprenderas todo las bases de SQL, ademas, consultas y programacion SQL', '2020-09-18 00:42:08', 5, '15', 'SQL-image', 1, 1);
+(31, 'Curso de PHP', 'En este cursos aprenderas las bases del lenguaje', '2020-09-27', 9, '10', '1601237949_work-731198_1280.jpg', 29, 1);
 
 -- --------------------------------------------------------
 
@@ -137,7 +146,7 @@ CREATE TABLE `docente` (
 --
 
 INSERT INTO `docente` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Usuario`, `Contraseña`, `Foto`, `Estado`) VALUES
-(1, 'José', 'Volaños', 'M', 'jose', 'jose', '', 1);
+(29, 'Jose', 'Rivera', 'M', 'admin', 'admin', '1601237892_pp.png', 1);
 
 -- --------------------------------------------------------
 
@@ -175,6 +184,17 @@ CREATE TABLE `plan` (
 
 INSERT INTO `plan` (`Id`, `Tipo_Plan`, `Descripcion`) VALUES
 (1, 'Normal', 'Contiene caracteristicas limitadas');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tema_contenido`
+--
+
+CREATE TABLE `tema_contenido` (
+  `Id` int(11) NOT NULL,
+  `Tema` varchar(100) COLLATE utf8_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 -- --------------------------------------------------------
 
@@ -271,6 +291,12 @@ ALTER TABLE `plan`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indices de la tabla `tema_contenido`
+--
+ALTER TABLE `tema_contenido`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -300,7 +326,7 @@ ALTER TABLE `administrador`
 -- AUTO_INCREMENT de la tabla `carrera`
 --
 ALTER TABLE `carrera`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario`
@@ -312,25 +338,31 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `contenido`
 --
 ALTER TABLE `contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
 --
 ALTER TABLE `plan`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `tema_contenido`
+--
+ALTER TABLE `tema_contenido`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
