@@ -4,7 +4,7 @@ include_once '../../../config/conexion.php';
 $usuario = isset($_POST['usuario'])? $_POST['usuario'] : "";
 $clave = isset($_POST['clave'])? $_POST['clave'] : "";
 
-$sql = "SELECT * FROM administrador WHERE Usuario=:usuario AND Contraseña=:clave";
+$sql = "SELECT * FROM docente WHERE Usuario=:usuario AND Contraseña=:clave";
 $resultado = $pdo->prepare($sql);
 $resultado->bindParam(':usuario', $usuario,PDO::PARAM_STR);
 $resultado->bindParam(':clave', $clave, PDO::PARAM_STR);
@@ -19,7 +19,7 @@ if ($numeroRegistro >= 1){
 	session_start();
 	$_SESSION['admin'] = $registro;
 	echo "Bienvenido";
-	header("Location:../../dashboard.php");
+	header("Location:../../home.php");
 }else{
 	session_start();
 	$_SESSION['errores'] = 'errorSession';
