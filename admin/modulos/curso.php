@@ -37,7 +37,7 @@ switch ($accion) {
 		//Comprando si se insertaron
 		if ($sentencia){
 			echo "<script>alert('Agregados')</script>";
-			header("Location:./vistaCurso.php");
+			echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 1000);</script>";
 		}else{
 			echo "<script>alert('Error al insertar los datos')</script>";
 		}
@@ -63,7 +63,7 @@ switch ($accion) {
 			$sentencia->bindParam(':Id',$Id);
 			$sentencia->execute();
 			//Redirigimos a la vista
-			header("Location:./vistaCurso.php");
+			echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 1000);</script>";
 		break;
 	case 'Actualizar':
 			//Consulta para actualizar los datos de tabla cursos
@@ -99,7 +99,7 @@ switch ($accion) {
 				$sentencia = $pdo->prepare($sql);
 				$sentencia->execute(array($nombreFoto,$Id));
 			}
-			header("Location:./vistaCurso.php");
+			echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 1000);</script>";
 
 		break;
 	default:

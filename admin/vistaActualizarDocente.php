@@ -54,8 +54,12 @@ $estado = isset($_POST['Estado']) ? $_POST['Estado'] : "";
                 <input name="Foto" class="form-control" id="Foto" accept="image/*" type="file" placeholder="Foto">
               </div>
               <div class="form-group">
-                <label>Estado</label>
-                <input name="Estado" class="form-control" value="<?php echo $estado; ?>" type="number" min="0" max="1">
+                <label for="">Estado de la cuenta</label>
+                <select class="form-control" name="Estado">
+                  <option value="<?php echo $estado; ?>"><?php if($estado == 1){ echo "Activado";}else{ echo "Desactivado";} ?></option>
+                  <option value="1">Activar</option>
+                  <option value="0">Desactivar</option>
+                </select>
               </div>
               <div class="tile-footer">
 		        <input name="accion" value="Actualizar" class="btn btn-primary" type="submit">

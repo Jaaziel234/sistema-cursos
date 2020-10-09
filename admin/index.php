@@ -34,6 +34,7 @@
       <div class="login-box">
         <form class="login-form" action="modulos/login/index.php" method="POST">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+          
           <div class="form-group">
             <label class="control-label">USUARIO</label>
             <input name="usuario" class="form-control" type="text" placeholder="Email" autofocus>

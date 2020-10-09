@@ -6,6 +6,9 @@
 <!----El back-end o logica---->
 <?php include_once "modulos/contenidoCurso.php";   ?>
 <!----Contenido para  mostrar----->
+<?php 
+$id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
+?>
 <main class="app-content">
   <div class="app-title">
     <div>
@@ -24,10 +27,20 @@
         <div class="row">
           <div class="col-lg-6">
             <form action="" method="POST" enctype="multipart/form-data">
+              <!---Envio de ID para permanecer las vista -->
+              <input type="hidden" name="Id_Curso" value="<?php echo $id_Curso ?>">
+              <!----Envio de ID para Actualizar---->
               <input type="hidden" name="Id" value="<?php echo $Id ?>">
               <div class="form-group">
                 <label for="temaContenido">Tema</label>
-                <input name="temaContenido" class="form-control" id="temaContenido" type="text" placeholder="Colocar el mismo nombre al contenido similar" value="<?php echo $temaContenido ?>">
+                <select class="form-control" id="temaContenido" name="temaContenido" required="">
+                  <option value="<?php echo $temaContenido ?>"><?php if($temaContenido != ''){echo "Actualmente o cambiar";} ?></option>
+                  <?php foreach($resultadoTema as $fila) : ?>
+                    <?php if ($fila['Id_Curso'] == $id_Curso) :?>
+                  <option value="<?php echo $fila['Tema']; ?>"><?php echo $fila['Tema']; ?></option>
+                    <?php endif ?>
+                <?php endforeach ?>
+                </select>
               </div>
               <div class="form-group">
                 <label for="tituloVideo">Titulo del video</label>
@@ -48,9 +61,10 @@
               <div class="form-group">
                 <label for="cursoId">Curso</label>
                 <select class="form-control" id="cursoId" name="cursoId" required="">
-                  <option value="<?php echo $cursoId ?>"><?php if($cursoId != ''){echo "Actualmente o cambiar";} ?></option>
                   <?php foreach($resultado as $fila) : ?>
+                    <?php if($fila['Id'] == $id_Curso) :?>
                   <option value="<?php echo $fila['Id']; ?>"><?php echo $fila['Nombre']; ?></option>
+                    <?php endif ?>
               	<?php endforeach ?>
                 </select>
               </div>
@@ -86,6 +100,7 @@
                 </thead>
                 <tbody>
                   	<?php foreach ($resultadoContenido as $data) : ?>
+                      <?php if ($data['Id_Curso'] == $id_Curso) :?>
                   		<tr>
                   			<th><?php echo $data['Id'] ?></th>
                   			<th><?php echo $data['Temas'] ?></th>
@@ -114,6 +129,7 @@
                           <button class="btn btn-danger" type="submit" name="accion" value="Eliminar">Eliminar</button>
                           </form>
                   			</th>
+                        <?php endif ?>
                   		</tr>
                   	<?php endforeach ?>
                 </tbody>

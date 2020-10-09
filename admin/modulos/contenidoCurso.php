@@ -1,6 +1,8 @@
 <?php
 $idDocente = "";
 include_once "../config/conexion.php";
+//Guardamos el ID del curso
+$id_Curso = isset($_POST['Id_Curso'])? $_POST['Id_Curso'] : "";
 
 //Datos enviados desde el formulario, obteniendo por metodo POST
 $Id = isset($_POST['Id'])? $_POST['Id'] : ""; //Sirve para actualizar y eliminar
@@ -38,7 +40,7 @@ switch ($accion) {
 		if ($sentencia){
 			echo "<script>alert('Agregados')</script>";
 			//header("Location:./vistaContenido.php");
-			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php' }, 1000);</script>";
+			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
 		}else{
 			echo "<script>alert('Error al insertar los datos')</script>";
 		}
@@ -64,7 +66,7 @@ switch ($accion) {
 			$sentencia->bindParam(':Id',$Id);
 			$sentencia->execute();
 			//Redirigimos a la vista
-			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php' }, 1000);</script>";
+			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
 		break;
 	case 'Actualizar':
 			//Consulta para actualizar los datos de tabla cursos
@@ -100,7 +102,7 @@ switch ($accion) {
 				$sentencia = $pdo->prepare($sql);
 				$sentencia->execute(array($nombreVideo,$Id));
 			}
-			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php' }, 1000);</script>";
+			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
 
 		break;
 	default:
@@ -121,5 +123,11 @@ $sentencia->execute();
 //Mis datos guardados en un array
 $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 
+//Sirve para mostrar los datos en mi Fomulario
+$sql = "SELECT * FROM tema_contenido ORDER BY Id ASC";
+$sentencia = $pdo->prepare($sql);
+$sentencia->execute();
+//Mis datos guardados en un array
+$resultadoTema = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 $pdo = null;
 ?>

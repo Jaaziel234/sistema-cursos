@@ -14,27 +14,36 @@ $accion = isset($_POST['accion']) ? $_POST['accion'] : "";
 switch ($accion) {
 	//Agregamos los datos a nuestra base de datos
 	case 'Agregar':
-		$sql = "INSERT INTO docente (Nombres, Apellidos, Sexo, Usuario, Contraseña, Foto, Estado) VALUES(?,?,?,?,?,?,?)";
-		//Agregando la fecha y moviendo el archivo a una carpeta especifica
-		$fecha = new DateTime();
-		//Seleecionamos el nombre del archivo
-		$nombreFoto = ($foto != "") ? $fecha->getTimestamp()."_".$_FILES['Foto']['name'] : "foto.jpg";
-		//Seleccionamos el value nombre temporal
-		$tmpFoto = isset($_FILES['Foto']['tmp_name']) ? $_FILES['Foto']['tmp_name'] : "";
-
-		if ($tmpFoto != ''){
-			//Funcion para mover la foto
-			move_uploaded_file($tmpFoto,"../recursos/images/fotoDocente/".$nombreFoto);
-		}
-		//Consulta SQL
-		$sentencia = $pdo->prepare($sql);
-		//Pasando los datos
-		$sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$nombreFoto,$estado));
-		//Comprando si se insertaron
-		if ($sentencia){
-			header("Location:../vistaAgregarDocente.php");
+		//Validando si no existe un docente que se ingresa a la BD
+		$sqlMostrar = "SELECT Usuario FROM docente WHERE Usuario=?";
+		$sentencia = $pdo->prepare($sqlMostrar);
+		$sentencia->execute(array($usuario));
+		if($sentencia->rowCount()>0){
+			echo "<script>alert('Ya existe este usuario')</script>";
+			echo "<script>window.setTimeout(function() { window.location = '../vistaAgregarDocente.php' }, 1000);</script>";
 		}else{
-			echo "<script>alert('Error')</script>";
+			$sql = "INSERT INTO docente (Nombres, Apellidos, Sexo, Usuario, Contraseña, Foto, Estado) VALUES(?,?,?,?,?,?,?)";
+			//Agregando la fecha y moviendo el archivo a una carpeta especifica
+			$fecha = new DateTime();
+			//Seleecionamos el nombre del archivo
+			$nombreFoto = ($foto != "") ? $fecha->getTimestamp()."_".$_FILES['Foto']['name'] : "foto.jpg";
+			//Seleccionamos el value nombre temporal
+			$tmpFoto = isset($_FILES['Foto']['tmp_name']) ? $_FILES['Foto']['tmp_name'] : "";
+
+			if ($tmpFoto != ''){
+				//Funcion para mover la foto
+				move_uploaded_file($tmpFoto,"../recursos/images/fotoDocente/".$nombreFoto);
+			}
+			//Consulta SQL
+			$sentencia = $pdo->prepare($sql);
+			//Pasando los datos
+			$sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$nombreFoto,$estado));
+			//Comprando si se insertaron
+			if ($sentencia){
+				header("Location:../vistaAgregarDocente.php");
+			}else{
+				echo "<script>alert('Error')</script>";
+			}
 		}
 		break;
 	case 'Eliminar':
