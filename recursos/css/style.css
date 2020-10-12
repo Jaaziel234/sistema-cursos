@@ -2,16 +2,6 @@
    css login y registarse
 ===============================================*/
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-   background: url(imagen.jpg);
-    background-size: cover;
-    background-attachment: fixed;
-}
-* {
-    box-sizing: border-box;
-}
 .contenedor{
     width: 100%;
     padding: 15px;
@@ -37,11 +27,7 @@ input[type="password"]{
     margin-bottom: 15px;
     border: 1px solid #aaa;
 }
-.icon{
-    min-width: 50px;
-    text-align: center;
-    color: #999;
-}
+
 .button{
     border: none;
     width: 100%;
@@ -366,7 +352,7 @@ section {
 ===============================================*/
 
 #call-to-action {
-	background-image: url('images/call-to-action.png');
+	background-image: url('../images/call-to-action.png');
 	background-repeat: no-repeat;
 	background-size: cover;
 	height: 100%;
