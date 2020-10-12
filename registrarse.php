@@ -50,33 +50,41 @@
   </nav>
   <!-- E N D  N A V B A R -->
 
-<form class="formulario">
+<form class="formulario" method="POST" action="modulos/registrarse.php">
     
     <h1>Registrate</h1>
      <div class="contenedor">
      
      <div class="input-contenedor">
-         <i class="fas fa-user icon"></i>
-         <input type="text" placeholder="Nombre Completo">
+        
+         <input name="nombres" type="text" placeholder="Nombre">
          
          </div>
          
          <div class="input-contenedor">
-         <i class="fas fa-envelope icon"></i>
-         <input type="text" placeholder="Correo Electronico">
+        
+         <input name="apellidos" type="text" placeholder="Apellido">
+         </div>
+         <div class="input-contenedor">
+        
+        <input name="correo" type="text" placeholder="Email">
+        </div>
+
          
+         <div class="input-contenedor">
+         <input name="usuario"  type="text" placeholder="Usuario">
          </div>
          
          <div class="input-contenedor">
-        <i class="fas fa-key icon"></i>
-         <input type="password" placeholder="Contraseña">
-         
+         <input name="clave"  type="password" placeholder="Contraseña">
          </div>
-         <input type="submit" value="Registrate" class="button">
+        
+         <input name="accion" type="submit" value="Registrate" class="button">
          <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
          <p>¿Ya tienes una cuenta?<a class="link" href="iniciarSesion.php">Iniciar Sesion</a></p>
      </div>
     </form>
+
 
   <!--  F O O T E R  -->
   <footer>
