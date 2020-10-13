@@ -12,42 +12,42 @@ $accion = isset($_POST['accion']) ? $_POST['accion'] : "";
 
 //Usando estrurando Switch, para evaluar diferentes eventos
 switch ($accion) {
-	//Agregamos los datos a nuestra base de datos
-	case 'Agregar':
-		$sql = "INSERT INTO tema_contenido (Tema,Id_Curso) VALUES(?,?)";
-		//Consulta SQL
-		$sentencia = $pdo->prepare($sql);
-		//Pasando los datos de tipo array
-		$sentencia->execute(array($temaContenido,$curso));
-		//Comprobando si se insertaron
-		if ($sentencia){
-			echo "<script>alert('Agregados')</script>";
-			echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
-		}else{
-			echo "<script>alert('Error al insertar los datos')</script>";
-		}
-		break;
+        //Agregamos los datos a nuestra base de datos
+    case 'Agregar':
+        $sql = "INSERT INTO tema_contenido (Tema,Id_Curso) VALUES(?,?)";
+        //Consulta SQL
+        $sentencia = $pdo->prepare($sql);
+        //Pasando los datos de tipo array
+        $sentencia->execute(array($temaContenido,$curso));
+        //Comprobando si se insertaron
+        if ($sentencia){
+            echo "<script>alert('Agregados')</script>";
+            echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
+        }else{
+            echo "<script>alert('Error al insertar los datos')</script>";
+        }
+        break;
 
-	case 'Eliminar':
-			//Consulta para eliminar el dato
-			$sql = "DELETE FROM tema_contenido WHERE Id=:Id";
-			$sentencia  = $pdo->prepare($sql);
-			$sentencia->bindParam(':Id',$Id);
-			$sentencia->execute();
-			//Redirigimos a la vista
-			echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
-		break;
-	case 'Actualizar':
-			//Consulta para actualizar los datos de tabla carrera
-			$sql = "UPDATE tema_contenido SET Tema=?,Id_Curso=? WHERE Id=?";
-			$sentencia = $pdo->prepare($sql);
-			$sentencia->execute(array($temaContenido,$curso,$Id));
-			echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
+    case 'Eliminar':
+        //Consulta para eliminar el dato
+        $sql = "DELETE FROM tema_contenido WHERE Id=:Id";
+        $sentencia  = $pdo->prepare($sql);
+        $sentencia->bindParam(':Id',$Id);
+        $sentencia->execute();
+        //Redirigimos a la vista
+        echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
+        break;
+    case 'Actualizar':
+        //Consulta para actualizar los datos de tabla carrera
+        $sql = "UPDATE tema_contenido SET Tema=?,Id_Curso=? WHERE Id=?";
+        $sentencia = $pdo->prepare($sql);
+        $sentencia->execute(array($temaContenido,$curso,$Id));
+        echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
 
-		break;
-	default:
-		# code...
-		break;
+        break;
+    default:
+        # code...
+        break;
 }
 //Sirve para mostrar los datos en mi formulario
 $sql = "SELECT * FROM curso ORDER BY Id ASC";

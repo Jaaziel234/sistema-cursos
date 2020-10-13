@@ -25,7 +25,7 @@ switch ($accion) {
     case 'Eliminar':
         //Obtenemos el ID del plan
         $Id = isset($_POST['Id'])? $_POST['Id'] : "";
- 
+
         //Consulta para eliminar el dato
         $sql = "DELETE FROM plan WHERE Id=:Id";
         $sentencia  = $pdo->prepare($sql);

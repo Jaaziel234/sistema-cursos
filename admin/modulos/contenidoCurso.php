@@ -18,96 +18,96 @@ $accion = isset($_POST['accion']) ? $_POST['accion'] : "";
 
 //Usando estrurando Switch, para evaluar diferentes eventos
 switch ($accion) {
-	//Agregamos los datos a nuestra base de datos
-	case 'Agregar':
-		$sql = "INSERT INTO contenido (Temas,Nombre,Descripcion,DuracionVideo, Video, Id_Curso) VALUES(?,?,?,?,?,?)";
-		//Agregando la fecha y moviendo el archivo a una carpeta especifica
-		$fecha = new DateTime();
-		//Seleecionamos el nombre del archivo
-		$nombreVideo = ($video != "") ? $fecha->getTimestamp()."_".$_FILES['video']['name'] : "Video.mp4";
-		//Seleccionamos el value nombre temporal
-		$tmpFoto = isset($_FILES['video']['tmp_name']) ? $_FILES['video']['tmp_name'] : "";
+        //Agregamos los datos a nuestra base de datos
+    case 'Agregar':
+        $sql = "INSERT INTO contenido (Temas,Nombre,Descripcion,DuracionVideo, Video, Id_Curso) VALUES(?,?,?,?,?,?)";
+        //Agregando la fecha y moviendo el archivo a una carpeta especifica
+        $fecha = new DateTime();
+        //Seleecionamos el nombre del archivo
+        $nombreVideo = ($video != "") ? $fecha->getTimestamp()."_".$_FILES['video']['name'] : "Video.mp4";
+        //Seleccionamos el value nombre temporal
+        $tmpFoto = isset($_FILES['video']['tmp_name']) ? $_FILES['video']['tmp_name'] : "";
 
-		if ($tmpFoto != ''){
-			//Funcion para mover la foto
-			move_uploaded_file($tmpFoto,"./contenido/videosCursos/".$nombreVideo);
-		}
-		//Consulta SQL
-		$sentencia = $pdo->prepare($sql);
-		//Pasando los datos de tipo array
-		$sentencia->execute(array($temaContenido,$tituloVideo,$descripcion,$duracion,$nombreVideo,$cursoId));
-		//Comprando si se insertaron
-		if ($sentencia){
-			echo "<script>alert('Agregados')</script>";
-			//header("Location:./vistaContenido.php");
-			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
-		}else{
-			echo "<script>alert('Error al insertar los datos')</script>";
-		}
-		break;
+        if ($tmpFoto != ''){
+            //Funcion para mover la foto
+            move_uploaded_file($tmpFoto,"./contenido/videosCursos/".$nombreVideo);
+        }
+        //Consulta SQL
+        $sentencia = $pdo->prepare($sql);
+        //Pasando los datos de tipo array
+        $sentencia->execute(array($temaContenido,$tituloVideo,$descripcion,$duracion,$nombreVideo,$cursoId));
+        //Comprando si se insertaron
+        if ($sentencia){
+            echo "<script>alert('Agregados')</script>";
+            //header("Location:./vistaContenido.php");
+            echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
+        }else{
+            echo "<script>alert('Error al insertar los datos')</script>";
+        }
+        break;
 
-	case 'Eliminar':
-			//para borrar la foto de la carpeta donde se guardan
-		  	$sentencia=$pdo->prepare("SELECT Video FROM contenido WHERE Id=:Id");
-		  	$sentencia->bindParam(':Id',$Id);
-		  	$sentencia->execute();
-		  	//Obtemos en un array la columna Foto, los datos
-		  	$fila= $sentencia->fetch(PDO::FETCH_ASSOC);
+    case 'Eliminar':
+        //para borrar la foto de la carpeta donde se guardan
+        $sentencia=$pdo->prepare("SELECT Video FROM contenido WHERE Id=:Id");
+        $sentencia->bindParam(':Id',$Id);
+        $sentencia->execute();
+        //Obtemos en un array la columna Foto, los datos
+        $fila= $sentencia->fetch(PDO::FETCH_ASSOC);
 
-		  	if(isset($fila["Video"])){
-		  		//Comprobamos si existe
-		     	if (file_exists("./contenido/videosCursos/".$fila["Video"])) {
-		       		unlink("./contenido/videosCursos/".$fila["Video"]);
-		     	}
-		    } 
-			//Consulta para eliminar el dato
-			$sql = "DELETE FROM contenido WHERE Id=:Id";
-			$sentencia  = $pdo->prepare($sql);
-			$sentencia->bindParam(':Id',$Id);
-			$sentencia->execute();
-			//Redirigimos a la vista
-			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
-		break;
-	case 'Actualizar':
-			//Consulta para actualizar los datos de tabla cursos
-			$sql = "UPDATE contenido SET Temas=?,Nombre=?,Descripcion=?,DuracionVideo=?, Id_Curso=? WHERE Id=?";
-			$sentencia = $pdo->prepare($sql);
-			$sentencia->execute(array($temaContenido,$tituloVideo,$descripcion,$duracion,$cursoId,$Id));
-			//Movemos la imagen
-			$fecha = new DateTime();
-			//Seleecionamos el nombre del archivo
-			$nombreVideo = ($video != "") ? $fecha->getTimestamp()."_".$_FILES['video']['name'] : "video.mp4";
-			//Seleccionamos el value nombre temporal
-			$tmpFoto = isset($_FILES['video']['tmp_name']) ? $_FILES['video']['tmp_name'] : "";
+        if(isset($fila["Video"])){
+            //Comprobamos si existe
+            if (file_exists("./contenido/videosCursos/".$fila["Video"])) {
+                unlink("./contenido/videosCursos/".$fila["Video"]);
+            }
+        } 
+        //Consulta para eliminar el dato
+        $sql = "DELETE FROM contenido WHERE Id=:Id";
+        $sentencia  = $pdo->prepare($sql);
+        $sentencia->bindParam(':Id',$Id);
+        $sentencia->execute();
+        //Redirigimos a la vista
+        echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
+        break;
+    case 'Actualizar':
+        //Consulta para actualizar los datos de tabla cursos
+        $sql = "UPDATE contenido SET Temas=?,Nombre=?,Descripcion=?,DuracionVideo=?, Id_Curso=? WHERE Id=?";
+        $sentencia = $pdo->prepare($sql);
+        $sentencia->execute(array($temaContenido,$tituloVideo,$descripcion,$duracion,$cursoId,$Id));
+        //Movemos la imagen
+        $fecha = new DateTime();
+        //Seleecionamos el nombre del archivo
+        $nombreVideo = ($video != "") ? $fecha->getTimestamp()."_".$_FILES['video']['name'] : "video.mp4";
+        //Seleccionamos el value nombre temporal
+        $tmpFoto = isset($_FILES['video']['tmp_name']) ? $_FILES['video']['tmp_name'] : "";
 
-			if ($tmpFoto != ''){
-				//Funcion para mover la foto
-				move_uploaded_file($tmpFoto,"./contenido/videosCursos/".$nombreVideo);
-				//para borrar la foto de la carpeta donde se guardan
-			  	$sentencia=$pdo->prepare("SELECT Video FROM contenido WHERE Id=:Id");
-			  	$sentencia->bindParam(':Id',$Id);
-			  	$sentencia->execute();
-			  	//Obtemos en un array la columna Foto, los datos
-			  	$fila= $sentencia->fetch(PDO::FETCH_ASSOC);
-			  	//print_r($fila);//solo para provar//
+        if ($tmpFoto != ''){
+            //Funcion para mover la foto
+            move_uploaded_file($tmpFoto,"./contenido/videosCursos/".$nombreVideo);
+            //para borrar la foto de la carpeta donde se guardan
+            $sentencia=$pdo->prepare("SELECT Video FROM contenido WHERE Id=:Id");
+            $sentencia->bindParam(':Id',$Id);
+            $sentencia->execute();
+            //Obtemos en un array la columna Foto, los datos
+            $fila= $sentencia->fetch(PDO::FETCH_ASSOC);
+            //print_r($fila);//solo para provar//
 
-			  	if(isset($fila["Video"])){
-			  		//Comprobamos si existe
-			     	if (file_exists("./contenido/videosCursos/".$fila["Video"])) {
-			       		unlink("./contenido/videosCursos/".$fila["Video"]);
-			     	}
-			    }
-			    //Nueva consulta para actualizar el nombre de la Imagen
-			    $sql = "UPDATE contenido SET Video=? WHERE Id=?";
-				$sentencia = $pdo->prepare($sql);
-				$sentencia->execute(array($nombreVideo,$Id));
-			}
-			echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
+            if(isset($fila["Video"])){
+                //Comprobamos si existe
+                if (file_exists("./contenido/videosCursos/".$fila["Video"])) {
+                    unlink("./contenido/videosCursos/".$fila["Video"]);
+                }
+            }
+            //Nueva consulta para actualizar el nombre de la Imagen
+            $sql = "UPDATE contenido SET Video=? WHERE Id=?";
+            $sentencia = $pdo->prepare($sql);
+            $sentencia->execute(array($nombreVideo,$Id));
+        }
+        echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
 
-		break;
-	default:
-		# code...
-		break;
+        break;
+    default:
+        # code...
+        break;
 }
 //Sirve para mostrar los datos en mi tabla
 $sql = "SELECT * FROM contenido ORDER BY Id ASC";

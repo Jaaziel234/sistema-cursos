@@ -3,9 +3,8 @@
 include_once 'config/conexion.php';
 $usuario = isset($_POST['usuario'])? $_POST['usuario'] : "";
 $clave = isset($_POST['clave'])? $_POST['clave'] : "";
-//$opcion = isset($_POST['opcion']) ? $_POST['opcion'] : '';
 
-//SQL para los casos de sesion
+//Consulta SQL
 $sqlUser = "SELECT * FROM usuario WHERE Usuario=:usuario AND Contraseña=:clave";
 
 //Ejecutando consulta 
@@ -17,14 +16,12 @@ $resultado->execute();
 $loginUser = $resultado->fetch(PDO::FETCH_ASSOC);
 
 if ($resultado->rowCount() > 0){
-		//Iniciamos la session 
-		session_start();
-		$_SESSION['usuario'] = $loginUser;
-		header("Location:index.php");
+    //Iniciamos la session de usuario 
+    session_start();
+    $_SESSION['usuario'] = $loginUser;
+    header("Location:index.php");
 }else{
-	
-	$_SESSION['errores'] = 'errorSession'; //colocar mensaje en formulario de iniciarSesion.php
-	
+    $_SESSION['errores'] = 'errorSession'; //Mensaje de error (Session)
 }
-$pdo = '';
+$pdo = ''; //Vaciamos la variable
 ?>

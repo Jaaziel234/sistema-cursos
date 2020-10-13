@@ -1,4 +1,5 @@
 <?php
+//Conexion
 include_once "./../config/conexion.php";
 
 $sql = "SELECT * FROM docente ORDER BY Id ASC";

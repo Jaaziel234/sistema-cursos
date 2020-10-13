@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2020 a las 20:08:14
+-- Tiempo de generación: 09-10-2020 a las 18:06:48
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.29
 
@@ -103,24 +103,13 @@ CREATE TABLE `curso` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Descripcion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `Fecha` date DEFAULT current_timestamp(),
   `DuracionCurso` int(11) NOT NULL,
   `Precio` decimal(11,0) NOT NULL,
   `Imagen` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Id_Docente` int(11) NOT NULL,
   `Id_Carrera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `curso`
---
-
-INSERT INTO `curso` (`Id`, `Nombre`, `Descripcion`, `Fecha`, `DuracionCurso`, `Precio`, `Imagen`, `Id_Docente`, `Id_Carrera`) VALUES
-(37, 'Curso de PHP', 'Aprenderas lo basico de php', '2020-10-09', 9, '10', '1602262838_work-731198_1280.jpg', 33, 1),
-(38, 'Python3', 'Aprenderas acerca de la sintaxis de programacion de Python', '2020-10-09', 9, '15', '1602263398_fondopython.jpg', 33, 1),
-(39, 'Curso de SQL sintax', 'Aprenderas acerca de la programacion de sql', '2020-10-09', 9, '8', '1602263586_FotoJet (1).jpg', 33, 1),
-(40, 'Economia', 'Aprenderas las sobre los estados financieros', '2020-10-09', 8, '15', '1602263755_keyboard-933568_1280.jpg', 33, 10),
-(41, 'SQL', 'hgfhgfhfg', '2020-10-10', 9, '6', '1602352720_work-731198_1280.jpg', 33, 1);
 
 -- --------------------------------------------------------
 
@@ -138,13 +127,6 @@ CREATE TABLE `docente` (
   `Foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Estado` tinyint(2) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `docente`
---
-
-INSERT INTO `docente` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Usuario`, `Contraseña`, `Foto`, `Estado`) VALUES
-(33, 'Jose', 'linares', 'M', 'admin', 'admin', '1602262774_pp.png', 1);
 
 -- --------------------------------------------------------
 
@@ -182,7 +164,7 @@ CREATE TABLE `plan` (
 --
 
 INSERT INTO `plan` (`Id`, `Tipo_Plan`, `Descripcion`, `Precio`) VALUES
-(2, 'Premium', 'Plan con limitado', '45.00');
+(1, 'Normal', 'Contiene caracteristicas limitadas', '0.00');
 
 -- --------------------------------------------------------
 
@@ -207,7 +189,7 @@ CREATE TABLE `usuario` (
   `Nombres` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Apellidos` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Sexo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha_nacimiento` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
+  `Edad` tinyint(4) NOT NULL,
   `Correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
@@ -216,13 +198,6 @@ CREATE TABLE `usuario` (
   `Id_Plan` int(11) NOT NULL,
   `Id_Pago` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nacimiento`, `Correo`, `Usuario`, `Contraseña`, `Foto`, `Id_Curso`, `Id_Plan`, `Id_Pago`) VALUES
-(2, 'gd', 'Volaños', 'M', '6', 'fghgfhgf', 'gfhfgh', 'fghfgh', 'gfhgfhfg', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -352,19 +327,19 @@ ALTER TABLE `contenido`
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
 --
 ALTER TABLE `plan`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `tema_contenido`
@@ -376,7 +351,7 @@ ALTER TABLE `tema_contenido`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `ventacurso`
@@ -413,6 +388,14 @@ ALTER TABLE `curso`
 --
 ALTER TABLE `tema_contenido`
   ADD CONSTRAINT `tema_contenido_ibfk_1` FOREIGN KEY (`Id_Curso`) REFERENCES `curso` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `usuario`
+--
+ALTER TABLE `usuario`
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`Id_Curso`) REFERENCES `curso` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`Id_Plan`) REFERENCES `plan` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`Id_Pago`) REFERENCES `pago` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ventacurso`
