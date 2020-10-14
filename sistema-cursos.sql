@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2020 a las 18:06:48
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.29
+-- Servidor: localhost
+-- Tiempo de generación: 14-10-2020 a las 00:42:35
+-- Versión del servidor: 10.3.23-MariaDB-0+deb10u1
+-- Versión de PHP: 7.3.19-1~deb10u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -388,14 +388,6 @@ ALTER TABLE `curso`
 --
 ALTER TABLE `tema_contenido`
   ADD CONSTRAINT `tema_contenido_ibfk_1` FOREIGN KEY (`Id_Curso`) REFERENCES `curso` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuario`
---
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`Id_Curso`) REFERENCES `curso` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`Id_Plan`) REFERENCES `plan` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`Id_Pago`) REFERENCES `pago` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `ventacurso`
