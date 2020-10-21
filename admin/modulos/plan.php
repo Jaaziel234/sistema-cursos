@@ -35,38 +35,11 @@ switch ($accion) {
         echo "<script>window.setTimeout(function() { window.location = './vistaPlan.php' }, 1000);</script>";
         break;
     case 'Actualizar':
-        $sql = "UPDATE docente SET Nombres=?,Apellidos=?,Sexo=?,Usuario=?,Contraseña=?,Estado=? WHERE Id=?";
+        $sql = "UPDATE plan SET Tipo_plan=?,Descripcion=?,Precio=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
-        $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$estado,$Id));
-        //Movemos la imagen
-        $fecha = new DateTime();
-        //Seleecionamos el nombre del archivo
-        $nombreFoto = ($foto != "") ? $fecha->getTimestamp()."_".$_FILES['Foto']['name'] : "foto.jpg";
-        //Seleccionamos el value nombre temporal
-        $tmpFoto = isset($_FILES['Foto']['tmp_name']) ? $_FILES['Foto']['tmp_name'] : "";
+        $sentencia->execute(array($nombrePlan,$descripcion,$precio));
 
-        if ($tmpFoto != ''){
-            //Funcion para mover la foto
-            move_uploaded_file($tmpFoto,"../recursos/images/fotoDocente/".$nombreFoto);
-            //para borrar la foto de la carpeta donde se guardan
-            $sentencia=$pdo->prepare("SELECT Foto FROM docente WHERE Id=:Id");
-            $sentencia->bindParam(':Id',$Id);
-            $sentencia->execute();
-            //Obtemos en un array la columna Foto, los datos
-            $fila= $sentencia->fetch(PDO::FETCH_ASSOC);
-            //print_r($fila);//solo para provar//
-
-            if(isset($fila["Foto"])){
-                //Comprobamos si existe
-                if (file_exists("../recursos/images/fotoDocente/".$fila["Foto"])) {
-                    unlink("../recursos/images/fotoDocente/".$fila["Foto"]);
-                }
-            }
-            $sql = "UPDATE docente SET Foto=? WHERE Id=?";
-            $sentencia = $pdo->prepare($sql);
-            $sentencia->execute(array($nombreFoto,$Id)); 
-        }
-        header("Location:../vistaDocente.php");
+        header("Location:../vistaPlan.php");
 
         break;
     default:
