@@ -3,7 +3,6 @@ include_once 'modulos/cursos.php';
 //Cabecera de sitio web
 include_once "plantillas/header.php";
 ?>
-<!-- E N D  N A V B A R -->
 <!-- H E R O -->
 <section id="hero">
     <div class="container">
@@ -113,7 +112,7 @@ include_once "plantillas/header.php";
             <div class="card-body">
                 <h5 class="card-title"><?php echo $curso['Nombre'] ?></h5>
                 <p class="card-text"><?php echo $curso['Descripcion'] ?></p>
-                <a href="#" class="btn btn-primary">$<?php echo number_format($curso['Precio'],2) ?> | <s>$<?php echo number_format($curso['Precio'] + 5,2) ?></s> </a>
+                <a href="curso.php?id=<?php echo $curso['Id']; ?>" class="btn btn-primary">$<?php echo number_format($curso['Precio'],2) ?> | <s>$<?php echo number_format($curso['Precio'] + 5,2) ?></s> </a>
                 <a href="temarioCurso.php?id_curso=<?php echo $curso['Id']; ?>" class="btn btn-primary">Conoce más...</a>
             </div>
         </div>

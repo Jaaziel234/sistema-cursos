@@ -12,7 +12,7 @@ $sentencia = $pdo->prepare($sql);
 $sentencia->execute();
 $resultadoCursos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 //Trayendo de la base de datos los temas(En desarrollo)
-$sql = "SELECT * FROM tema_contenido";
+$sql = "SELECT * FROM curso INNER JOIN tema_contenido ON tema_contenido.Id_Curso = curso.Id";
 $sentencia = $pdo->prepare($sql);
 $sentencia->execute();
 $resultadoTemas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
