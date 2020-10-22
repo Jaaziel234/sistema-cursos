@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 14-10-2020 a las 08:07:15
+-- Tiempo de generación: 21-10-2020 a las 23:19:43
 -- Versión del servidor: 10.3.23-MariaDB-0+deb10u1
 -- Versión de PHP: 7.3.19-1~deb10u1
 
@@ -72,7 +72,7 @@ INSERT INTO `carrera` (`Id`, `Nombre`) VALUES
 
 CREATE TABLE `comentario` (
   `Id` int(11) NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Fecha` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Id_Usuario` int(11) NOT NULL,
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -92,6 +92,14 @@ CREATE TABLE `contenido` (
   `Video` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `contenido`
+--
+
+INSERT INTO `contenido` (`Id`, `Temas`, `Nombre`, `Descripcion`, `DuracionVideo`, `Video`, `Id_Curso`) VALUES
+(37, 'Introduccion Python3', 'Primer video del curso de Python3', 'htyfghgfhgfhfghfhfghgfh', '9', '1603159262_002 Presentación del curso.mp4', 38),
+(38, 'Introduccion Python3', 'Segundo video de python3', 'Aprenderas las bases', '9', '1603159294_001 Presentación personal.mp4', 38);
 
 -- --------------------------------------------------------
 
@@ -200,7 +208,8 @@ CREATE TABLE `tema_contenido` (
 --
 
 INSERT INTO `tema_contenido` (`Id`, `Tema`, `Id_Curso`) VALUES
-(6, 'Video introductorio', 39);
+(6, 'Video introductorio', 39),
+(7, 'Introduccion Python3', 38);
 
 -- --------------------------------------------------------
 
@@ -223,6 +232,13 @@ CREATE TABLE `usuario` (
   `Id_Pago` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nacimiento`, `Correo`, `Usuario`, `Contraseña`, `Foto`, `Id_Curso`, `Id_Plan`, `Id_Pago`) VALUES
+(6, 'Jose', 'jose', NULL, NULL, 'jose@josedeodanes', 'jose', 'jose002', NULL, NULL, NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -234,7 +250,7 @@ CREATE TABLE `ventacurso` (
   `Correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `ClaveTransaccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `PaypalDato` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `Fecha` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Estado` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
   `Id_Usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -345,7 +361,7 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `contenido`
 --
 ALTER TABLE `contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
@@ -369,13 +385,13 @@ ALTER TABLE `plan`
 -- AUTO_INCREMENT de la tabla `tema_contenido`
 --
 ALTER TABLE `tema_contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `ventacurso`
