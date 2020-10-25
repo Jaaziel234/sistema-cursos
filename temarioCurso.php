@@ -16,7 +16,7 @@ $Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
                 <p class="text-white">Fecha de lanzamiento: <?php echo $curso['Fecha']; ?></p>
                 <p class="text-white">Descripción: <?php echo $curso['Descripcion']; ?></p>
                 <p class="text-white">Duracíón aproximado: <?php echo $curso['DuracionCurso']; ?> hrs</p>
-                <a class="btn btn-primary" href="curso.php?id=<?php echo $curso['Id']; ?>" >¡Toma el curso ahora!</a>
+                <a class="btn btn-primary" href="validacion.php?id=<?php echo $curso['Id']; ?>" >¡Toma el curso ahora!</a>
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center">
                 <img class="img-fluid rounded" width="80%" src="./admin/recursos/images/imgCurso/<?php echo $curso['Imagen']; ?>" alt="">

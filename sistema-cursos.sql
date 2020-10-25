@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost
--- Tiempo de generación: 21-10-2020 a las 23:19:43
--- Versión del servidor: 10.3.23-MariaDB-0+deb10u1
--- Versión de PHP: 7.3.19-1~deb10u1
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 25-10-2020 a las 23:30:08
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -62,7 +62,7 @@ INSERT INTO `carrera` (`Id`, `Nombre`) VALUES
 (1, 'Computacion 1'),
 (8, 'Ingeniería mecanica'),
 (9, 'Licenciatura en computacion'),
-(10, 'Economia');
+(10, 'Licenciatura en ciencias economicas');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ INSERT INTO `carrera` (`Id`, `Nombre`) VALUES
 
 CREATE TABLE `comentario` (
   `Id` int(11) NOT NULL,
-  `Fecha` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `Fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Id_Usuario` int(11) NOT NULL,
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -98,8 +98,8 @@ CREATE TABLE `contenido` (
 --
 
 INSERT INTO `contenido` (`Id`, `Temas`, `Nombre`, `Descripcion`, `DuracionVideo`, `Video`, `Id_Curso`) VALUES
-(37, 'Introduccion Python3', 'Primer video del curso de Python3', 'htyfghgfhgfhfghfhfghgfh', '9', '1603159262_002 Presentación del curso.mp4', 38),
-(38, 'Introduccion Python3', 'Segundo video de python3', 'Aprenderas las bases', '9', '1603159294_001 Presentación personal.mp4', 38);
+(35, 'Introduccion a Interfaces graficas', 'Primer contacto con el modulo Tkinter', 'Acerca del modulo y los Widgets', '9', '1603648202_1. Introduccion a interfaces graficas con TKinter- Raiz Root.mp4', 38),
+(36, 'Introduccion a Interfaces graficas', 'Las propiedades del Frame dentro de Tkinter', 'Aprenderas las propiedades del modulo tkinter, ent', '7', '1603648290_1.Introducción a interfaces gráficas con Tkinter   Frame  Código nativo.mp4', 38);
 
 -- --------------------------------------------------------
 
@@ -124,10 +124,8 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`Id`, `Nombre`, `Descripcion`, `Fecha`, `DuracionCurso`, `Precio`, `Imagen`, `Id_Docente`, `Id_Carrera`) VALUES
-(38, 'Python3', 'Aprenderas acerca de la sintaxis de programacion de Python', '2020-10-09', 9, '15', '1602263398_fondopython.jpg', 33, 1),
-(39, 'Curso de SQL sintax', 'Aprenderas acerca de la programacion de sql', '2020-10-09', 9, '8', '1602263586_FotoJet (1).jpg', 33, 1),
-(40, 'Economia', 'Aprenderas las sobre los estados financieros', '2020-10-09', 8, '15', '1602263755_keyboard-933568_1280.jpg', 33, 10),
-(41, 'SQL', 'hgfhgfhfg', '2020-10-10', 9, '6', '1602352720_work-731198_1280.jpg', 33, 1);
+(38, 'Python3', 'Aprenderas acerca de la sintaxis de programacion de Python', '2020-10-09', 9, '15', '1603647954_Foto de curso.jpg', 33, 1),
+(42, 'Introduccion a las interfaces graficas en python', 'Aprenderas sobre las interfaces graficas usando Python , ademas entraras a usar el modulo Tkinter  a', '2020-10-25', 9, '15', '1603648063_Foto de curso.jpg', 34, 1);
 
 -- --------------------------------------------------------
 
@@ -151,7 +149,8 @@ CREATE TABLE `docente` (
 --
 
 INSERT INTO `docente` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Usuario`, `Contraseña`, `Foto`, `Estado`) VALUES
-(33, 'Jose', 'linares', 'M', 'admin', 'admin', '1602262774_pp.png', 1);
+(33, 'Jose', 'linares', 'M', 'admin', 'admin', '1602262774_pp.png', 1),
+(34, 'Oscar el master', 'Martinez', 'M', 'oscar', 'oscar', '1602370606_descarga.png', 1);
 
 -- --------------------------------------------------------
 
@@ -208,8 +207,7 @@ CREATE TABLE `tema_contenido` (
 --
 
 INSERT INTO `tema_contenido` (`Id`, `Tema`, `Id_Curso`) VALUES
-(6, 'Video introductorio', 39),
-(7, 'Introduccion Python3', 38);
+(7, 'Introduccion a Interfaces graficas', 38);
 
 -- --------------------------------------------------------
 
@@ -221,15 +219,15 @@ CREATE TABLE `usuario` (
   `Id` int(11) NOT NULL,
   `Nombres` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Apellidos` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `Sexo` varchar(20) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `Fecha_nacimiento` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `Sexo` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
+  `Fecha_nacimiento` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `Correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `Foto` varchar(50) COLLATE utf8_spanish_ci DEFAULT NULL,
-  `Id_Curso` int(11) DEFAULT NULL,
-  `Id_Plan` int(11) DEFAULT NULL,
-  `Id_Pago` int(11) DEFAULT NULL
+  `Foto` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `Id_Curso` int(11) NOT NULL,
+  `Id_Plan` int(11) NOT NULL,
+  `Id_Pago` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
@@ -237,7 +235,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nacimiento`, `Correo`, `Usuario`, `Contraseña`, `Foto`, `Id_Curso`, `Id_Plan`, `Id_Pago`) VALUES
-(6, 'Jose', 'jose', NULL, NULL, 'jose@josedeodanes', 'jose', 'jose002', NULL, NULL, NULL, NULL);
+(19, 'Jose', 'Deo', '', '', 'admin@admin', 'jose', 'jose', '', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -250,10 +248,18 @@ CREATE TABLE `ventacurso` (
   `Correo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `ClaveTransaccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `PaypalDato` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
-  `Fecha` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `Fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Estado` varchar(20) COLLATE utf8_spanish_ci NOT NULL,
-  `Id_Usuario` int(11) NOT NULL
+  `Id_Usuario` int(11) NOT NULL,
+  `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `ventacurso`
+--
+
+INSERT INTO `ventacurso` (`Id`, `Correo`, `ClaveTransaccion`, `PaypalDato`, `Fecha`, `Estado`, `Id_Usuario`, `Id_Curso`) VALUES
+(9, '', '', '', '2020-10-25 22:28:41', 'pagado', 19, 38);
 
 --
 -- Índices para tablas volcadas
@@ -361,13 +367,13 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `contenido`
 --
 ALTER TABLE `contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
@@ -391,13 +397,13 @@ ALTER TABLE `tema_contenido`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `ventacurso`
 --
 ALTER TABLE `ventacurso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

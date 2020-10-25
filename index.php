@@ -112,8 +112,10 @@ include_once "plantillas/header.php";
             <div class="card-body">
                 <h5 class="card-title"><?php echo $curso['Nombre'] ?></h5>
                 <p class="card-text"><?php echo $curso['Descripcion'] ?></p>
-                <a href="curso.php?id=<?php echo $curso['Id']; ?>" class="btn btn-primary">$<?php echo number_format($curso['Precio'],2) ?> | <s>$<?php echo number_format($curso['Precio'] + 5,2) ?></s> </a>
-                <a href="temarioCurso.php?id_curso=<?php echo $curso['Id']; ?>" class="btn btn-primary">Conoce más...</a>
+                <div class="list-group list-group-flush m-0">
+                    <li class="list-group-item">$<?php echo number_format($curso['Precio'],2) ?> | <s>$<?php echo number_format($curso['Precio'] + 5,2) ?></s> </li>
+                </div>
+                <a href="temarioCurso.php?id_curso=<?php echo $curso['Id']; ?>" class="btn btn-primary">Explorar curso</a>
             </div>
         </div>
     </div>

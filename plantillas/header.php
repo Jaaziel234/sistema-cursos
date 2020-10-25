@@ -29,7 +29,7 @@ session_start();
                     <a href="index.php"><img src="recursos/images/logo.png" class="img-fluid nav-logo-desktop" alt="Company Logo" width="150px"></a>
                     <ul class="navbar-nav ml-auto nav-right" data-easing="easeInOutExpo" data-speed="1250" data-offset="65">
                         <li class="nav-item nav-custom-link">
-                            <a class="nav-link" href="#">CURSOS <i class="icon ion-ios-arrow-forward icon-mobile"></i></a>
+                            <a class="nav-link" href="cursos.php">CURSOS <i class="icon ion-ios-arrow-forward icon-mobile"></i></a>
                         </li>
                         <li class="nav-item nav-custom-link">
                             <a class="nav-link" href=" ">PREMIUM <i class="icon ion-ios-arrow-forward icon-mobile"></i></a>

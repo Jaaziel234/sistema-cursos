@@ -5,6 +5,16 @@ include_once "plantillas/header.php";
 
 <form class="formulario" method="POST" action="modulos/registrarse.php">
     <h1>Registrate</h1>
+    <?php if (isset($aErrores)): ?>
+        <?php foreach($aErrores as $error) : ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+          <?php echo $error ?>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <?php endforeach?>
+    <?php endif ?>
     <div class="contenedor">
         <div class="input-contenedor">
             <input name="nombres" type="text" placeholder="Nombre" required>
