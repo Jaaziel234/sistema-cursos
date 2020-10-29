@@ -59,5 +59,6 @@
 <script src="recursos/js/jquery-3.4.1.slim.min.js"></script>
 <script src="recursos/js/popper.min.js"></script>
 <script src="recursos/js/bootstrap.min.js"></script>
+<script src="recursos/js/security.js"></script>
 </body>
 </html>
