@@ -19,7 +19,7 @@ $Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
                 <a class="btn btn-primary" href="validacion.php?id=<?php echo $curso['Id']; ?>" >¡Toma el curso ahora!</a>
             </div>
             <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center">
-                <img class="img-fluid rounded" width="80%" src="./admin/recursos/images/imgCurso/<?php echo $curso['Imagen']; ?>" alt="">
+                <img class="img-fluid rounded" src="./admin/recursos/images/imgCurso/<?php echo $curso['Imagen']; ?>" alt="">
             </div>
             <?php endif ?>
             <?php endforeach ?>

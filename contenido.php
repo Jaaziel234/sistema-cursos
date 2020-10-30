@@ -5,6 +5,10 @@ include_once "plantillas/header.php";
 include_once 'modulos/videos.php';
 //Id del curso
 $Id = isset($_GET['id']) ? $_GET['id'] : '';
+//Validacion de sesion
+if(!isset($_SESSION['usuario'])){
+	header("Location:index.php");
+}
 ?>
 <section class="bg-light">
 	<div class="container mt-5">

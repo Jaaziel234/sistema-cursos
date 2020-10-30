@@ -21,6 +21,7 @@ if ($resultado->rowCount() > 0){
     $_SESSION['usuario'] = $loginUser;
     header("Location:index.php");
 }else{
+	session_start();
     $_SESSION['errores'] = 'errorSession'; //Mensaje de error (Session)
 }
 $pdo = ''; //Vaciamos la variable

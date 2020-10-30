@@ -21,7 +21,7 @@ $resultadoTemas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ***************Consulta para comprobar si ya ha comprado el curso**************
 */
 
-$consultaSQL = "SELECT Id_Curso FROM ventacurso";
+$consultaSQL = "SELECT Id_Usuario,Id_Curso FROM ventacurso";
 $sentencia = $pdo->prepare($consultaSQL);
 $sentencia->execute();
 $comprabacionCurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);

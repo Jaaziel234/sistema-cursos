@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2020 a las 23:30:08
+-- Tiempo de generación: 30-10-2020 a las 05:54:25
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.29
 
@@ -225,7 +225,6 @@ CREATE TABLE `usuario` (
   `Usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Contraseña` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Foto` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
-  `Id_Curso` int(11) NOT NULL,
   `Id_Plan` int(11) NOT NULL,
   `Id_Pago` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
@@ -234,8 +233,8 @@ CREATE TABLE `usuario` (
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nacimiento`, `Correo`, `Usuario`, `Contraseña`, `Foto`, `Id_Curso`, `Id_Plan`, `Id_Pago`) VALUES
-(19, 'Jose', 'Deo', '', '', 'admin@admin', 'jose', 'jose', '', 0, 0, 0);
+INSERT INTO `usuario` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nacimiento`, `Correo`, `Usuario`, `Contraseña`, `Foto`, `Id_Plan`, `Id_Pago`) VALUES
+(61, 'Jose', 'Rivas', '', '', 'admin@admin', 'jose', 'jose002', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -259,7 +258,7 @@ CREATE TABLE `ventacurso` (
 --
 
 INSERT INTO `ventacurso` (`Id`, `Correo`, `ClaveTransaccion`, `PaypalDato`, `Fecha`, `Estado`, `Id_Usuario`, `Id_Curso`) VALUES
-(9, '', '', '', '2020-10-25 22:28:41', 'pagado', 19, 38);
+(16, '', '', '', '2020-10-30 02:01:57', 'pagado', 61, 42);
 
 --
 -- Índices para tablas volcadas
@@ -330,7 +329,6 @@ ALTER TABLE `tema_contenido`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`Id`),
-  ADD KEY `Id_Curso` (`Id_Curso`),
   ADD KEY `Id_Plan` (`Id_Plan`),
   ADD KEY `Id_Pago` (`Id_Pago`);
 
@@ -397,13 +395,13 @@ ALTER TABLE `tema_contenido`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT de la tabla `ventacurso`
 --
 ALTER TABLE `ventacurso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas

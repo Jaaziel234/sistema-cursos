@@ -45,6 +45,9 @@ session_start();
                         <li class="nav-item nav-custom-link btn btn-demo-small">
                             <a class="nav-link" href="#">PERFIL <i class="icon ion-ios-arrow-forward icon-mobile"></i></a>
                         </li>
+                        <li class="nav-item nav-custom-link">
+                            <a class="nav-link" href="./modulos/cerrarSesion.php">CERRAR SESIÓN</a>
+                        </li>
                         <?php } ?>
                     </ul>
                 </div>
