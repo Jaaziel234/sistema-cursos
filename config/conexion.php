@@ -5,7 +5,7 @@ try{
     $pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
     //echo "<script>alert('conectado')</script>";
 }catch(Exception $e){
-    die($e->getMessaget());
+    die($e->getMessage());
     //echo "<script>alert('Error')</script>";
 }
 ?>

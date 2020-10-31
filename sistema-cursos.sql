@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-10-2020 a las 05:54:25
+-- Tiempo de generación: 31-10-2020 a las 19:36:37
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.29
 
@@ -72,10 +72,22 @@ INSERT INTO `carrera` (`Id`, `Nombre`) VALUES
 
 CREATE TABLE `comentario` (
   `Id` int(11) NOT NULL,
+  `Comentario` text COLLATE utf8_spanish_ci NOT NULL,
   `Fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `Id_Usuario` int(11) NOT NULL,
-  `Id_Curso` int(11) NOT NULL
+  `Id_Curso` int(11) NOT NULL,
+  `Id_Video` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `comentario`
+--
+
+INSERT INTO `comentario` (`Id`, `Comentario`, `Fecha`, `Id_Usuario`, `Id_Curso`, `Id_Video`) VALUES
+(16, 'Me gusto el curso', '2020-10-31 01:49:50', 61, 38, 36),
+(26, 'Bien echo', '2020-10-31 02:35:25', 63, 38, 36),
+(28, 'Me gusto el video', '2020-10-31 18:31:22', 61, 38, 36),
+(29, 'M e gusto como explica', '2020-10-31 18:32:01', 61, 38, 36);
 
 -- --------------------------------------------------------
 
@@ -99,7 +111,8 @@ CREATE TABLE `contenido` (
 
 INSERT INTO `contenido` (`Id`, `Temas`, `Nombre`, `Descripcion`, `DuracionVideo`, `Video`, `Id_Curso`) VALUES
 (35, 'Introduccion a Interfaces graficas', 'Primer contacto con el modulo Tkinter', 'Acerca del modulo y los Widgets', '9', '1603648202_1. Introduccion a interfaces graficas con TKinter- Raiz Root.mp4', 38),
-(36, 'Introduccion a Interfaces graficas', 'Las propiedades del Frame dentro de Tkinter', 'Aprenderas las propiedades del modulo tkinter, ent', '7', '1603648290_1.Introducción a interfaces gráficas con Tkinter   Frame  Código nativo.mp4', 38);
+(36, 'Introduccion a Interfaces graficas', 'Las propiedades del Frame dentro de Tkinter', 'Aprenderas las propiedades del modulo tkinter, ent', '7', '1603648290_1.Introducción a interfaces gráficas con Tkinter   Frame  Código nativo.mp4', 38),
+(37, 'Introduccion al python', 'Primer contacto', 'vhgfhgfhgfhgfhfghfg', '8', '1604109297_5 Widget Tree view.mp4', 42);
 
 -- --------------------------------------------------------
 
@@ -207,7 +220,8 @@ CREATE TABLE `tema_contenido` (
 --
 
 INSERT INTO `tema_contenido` (`Id`, `Tema`, `Id_Curso`) VALUES
-(7, 'Introduccion a Interfaces graficas', 38);
+(7, 'Introduccion a Interfaces graficas', 38),
+(8, 'Introduccion al python', 42);
 
 -- --------------------------------------------------------
 
@@ -234,7 +248,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nacimiento`, `Correo`, `Usuario`, `Contraseña`, `Foto`, `Id_Plan`, `Id_Pago`) VALUES
-(61, 'Jose', 'Rivas', '', '', 'admin@admin', 'jose', 'jose002', '', 0, 0);
+(61, 'Jose', 'Rivas', '', '', 'admin@admin', 'jose', 'jose002', '', 0, 0),
+(62, 'vcbvc', 'bvcb', '', '', 'cvbvcbvc@gmela.com', 'bvcbvcb', 'vcghgfhgf', '', 0, 0),
+(63, 'jose', 'rivas', '', '', 'canservero@gmail.com', 'hola', 'hola1', '', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -258,7 +274,10 @@ CREATE TABLE `ventacurso` (
 --
 
 INSERT INTO `ventacurso` (`Id`, `Correo`, `ClaveTransaccion`, `PaypalDato`, `Fecha`, `Estado`, `Id_Usuario`, `Id_Curso`) VALUES
-(16, '', '', '', '2020-10-30 02:01:57', 'pagado', 61, 42);
+(16, '', '', '', '2020-10-30 02:01:57', 'pagado', 61, 42),
+(17, '', '', '', '2020-10-30 15:16:34', 'pagado', 61, 38),
+(18, '', '', '', '2020-10-30 23:32:13', 'pagado', 63, 38),
+(19, '', '', '', '2020-10-31 00:13:47', 'pagado', 63, 42);
 
 --
 -- Índices para tablas volcadas
@@ -359,13 +378,13 @@ ALTER TABLE `carrera`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `contenido`
 --
 ALTER TABLE `contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
@@ -389,19 +408,19 @@ ALTER TABLE `plan`
 -- AUTO_INCREMENT de la tabla `tema_contenido`
 --
 ALTER TABLE `tema_contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- AUTO_INCREMENT de la tabla `ventacurso`
 --
 ALTER TABLE `ventacurso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Restricciones para tablas volcadas

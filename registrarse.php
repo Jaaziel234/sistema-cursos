@@ -17,7 +17,7 @@ include_once "plantillas/header.php";
             <input id="apellidos" name="apellidos" type="text" placeholder="Apellido" required value="<?php echo $apellido ?>">
         </div>
         <div class="input-contenedor">
-            <input id="email" name="correo" type="text" class="text" placeholder="Email" required>
+            <input id="email" name="correo" type="email" placeholder="Email" required>
         </div>
         <div class="input-contenedor">
             <input id="usuario" name="usuario"  type="text" placeholder="Usuario" required>

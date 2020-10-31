@@ -20,10 +20,11 @@ $registroUsuario = $_SESSION['usuario']['Id'];
 			<h2 class="text-center">Compra el curso y obtendras acceso de por vida</h2>
 			<div class="title-block">
 				<?php foreach($comprabacionCurso as $cursoVenta) :?>
+					<!----Redireccion al curso------>
 					<?php if (($cursoVenta['Id_Usuario'] == $registroUsuario) && ($cursoVenta['Id_Curso'] == $codCurso)) : ?>
 						<?php $codCompra = $cursoVenta['Id_Curso'] ?>
         				<?php //header("Location:./contenido.php?id=$codCurso"); ?>
-        				<?php echo "<script>window.setTimeout(function() { window.location = './contenido.php?id=$codCurso' }, 100);</script>"; ?>
+        				<?php echo "<script>window.setTimeout(function() { window.location = './contenido.php?id=$codCurso' }, 10);</script>"; ?>
 
         		<?php endif ?>
         		<?php endforeach ?>

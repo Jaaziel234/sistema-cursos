@@ -27,5 +27,5 @@ $aErrores = array();
 if((strlen($clave) < 6)){
 	$aErrores[] = "Correo no valido o contraseña";
 }
-
+$pdo = "";
 ?>

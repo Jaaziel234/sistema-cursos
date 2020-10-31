@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -14,6 +16,8 @@ session_start();
         <link rel="stylesheet" href="recursos/css/style.css" type="text/css" />
         <!-- Ionic icons -->
         <link href="https://unpkg.com/ionicons@4.2.0/dist/css/ionicons.min.css" rel="stylesheet">
+        <!---Iconos de BoxIcons---->
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     </head>

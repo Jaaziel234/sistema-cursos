@@ -26,7 +26,7 @@ include_once "plantillas/header.php";
         <div class="input-contenedor">
             <input name="clave" type="password" placeholder="Contraseña" required>
         </div>
-        <input type="submit" value="Login" class="button">
+        <input name="enviar" type="submit" value="Login" class="button">
         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
         <p>¿No tienes una cuenta? <a class="link" href="registrarse.php">Registrate </a></p>
     </div>
