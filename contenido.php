@@ -30,7 +30,7 @@ $id_Usuario = $_SESSION['usuario']['Id'];
 					<h3 class="pt-4 d-none d-md-block">Aportes</h3>
 						<?php foreach($resultComent as $coment): ?>
 							<?php if(($coment['Id_Curso'] == $Id) && ($coment['Id_Video'] == $video)) :?>
-					  <div class="media mb-4">
+					  <div class="media mb-4 d-none d-md-block">
 					  	<?php if ($coment['Foto'] == ''):?>
 					    <img class="mr-3" width="100px" src="./recursos/images/logo.png" class="mr-3" alt="FotoUser">
 						<?php endif ?>
