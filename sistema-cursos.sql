@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 31-10-2020 a las 19:36:37
+-- Tiempo de generación: 04-11-2020 a las 20:45:50
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.2.29
 
@@ -36,13 +36,6 @@ CREATE TABLE `administrador` (
   `Estado` tinyint(2) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `administrador`
---
-
-INSERT INTO `administrador` (`Id`, `Nombres`, `Apellidos`, `Usuario`, `Contraseña`, `Estado`) VALUES
-(1, 'Jose', 'Deodanes', 'admin1', 'admin', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -53,16 +46,6 @@ CREATE TABLE `carrera` (
   `Id` int(11) NOT NULL,
   `Nombre` varchar(50) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `carrera`
---
-
-INSERT INTO `carrera` (`Id`, `Nombre`) VALUES
-(1, 'Computacion 1'),
-(8, 'Ingeniería mecanica'),
-(9, 'Licenciatura en computacion'),
-(10, 'Licenciatura en ciencias economicas');
 
 -- --------------------------------------------------------
 
@@ -79,16 +62,6 @@ CREATE TABLE `comentario` (
   `Id_Video` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `comentario`
---
-
-INSERT INTO `comentario` (`Id`, `Comentario`, `Fecha`, `Id_Usuario`, `Id_Curso`, `Id_Video`) VALUES
-(16, 'Me gusto el curso', '2020-10-31 01:49:50', 61, 38, 36),
-(26, 'Bien echo', '2020-10-31 02:35:25', 63, 38, 36),
-(28, 'Me gusto el video', '2020-10-31 18:31:22', 61, 38, 36),
-(29, 'M e gusto como explica', '2020-10-31 18:32:01', 61, 38, 36);
-
 -- --------------------------------------------------------
 
 --
@@ -104,15 +77,6 @@ CREATE TABLE `contenido` (
   `Video` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `contenido`
---
-
-INSERT INTO `contenido` (`Id`, `Temas`, `Nombre`, `Descripcion`, `DuracionVideo`, `Video`, `Id_Curso`) VALUES
-(35, 'Introduccion a Interfaces graficas', 'Primer contacto con el modulo Tkinter', 'Acerca del modulo y los Widgets', '9', '1603648202_1. Introduccion a interfaces graficas con TKinter- Raiz Root.mp4', 38),
-(36, 'Introduccion a Interfaces graficas', 'Las propiedades del Frame dentro de Tkinter', 'Aprenderas las propiedades del modulo tkinter, ent', '7', '1603648290_1.Introducción a interfaces gráficas con Tkinter   Frame  Código nativo.mp4', 38),
-(37, 'Introduccion al python', 'Primer contacto', 'vhgfhgfhgfhgfhfghfg', '8', '1604109297_5 Widget Tree view.mp4', 42);
 
 -- --------------------------------------------------------
 
@@ -132,14 +96,6 @@ CREATE TABLE `curso` (
   `Id_Carrera` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `curso`
---
-
-INSERT INTO `curso` (`Id`, `Nombre`, `Descripcion`, `Fecha`, `DuracionCurso`, `Precio`, `Imagen`, `Id_Docente`, `Id_Carrera`) VALUES
-(38, 'Python3', 'Aprenderas acerca de la sintaxis de programacion de Python', '2020-10-09', 9, '15', '1603647954_Foto de curso.jpg', 33, 1),
-(42, 'Introduccion a las interfaces graficas en python', 'Aprenderas sobre las interfaces graficas usando Python , ademas entraras a usar el modulo Tkinter  a', '2020-10-25', 9, '15', '1603648063_Foto de curso.jpg', 34, 1);
-
 -- --------------------------------------------------------
 
 --
@@ -157,14 +113,6 @@ CREATE TABLE `docente` (
   `Estado` tinyint(2) UNSIGNED NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `docente`
---
-
-INSERT INTO `docente` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Usuario`, `Contraseña`, `Foto`, `Estado`) VALUES
-(33, 'Jose', 'linares', 'M', 'admin', 'admin', '1602262774_pp.png', 1),
-(34, 'Oscar el master', 'Martinez', 'M', 'oscar', 'oscar', '1602370606_descarga.png', 1);
-
 -- --------------------------------------------------------
 
 --
@@ -181,7 +129,7 @@ CREATE TABLE `pago` (
 --
 
 INSERT INTO `pago` (`Id`, `Nombre`) VALUES
-(1, 'Paypal');
+(1, 'PayPal');
 
 -- --------------------------------------------------------
 
@@ -215,14 +163,6 @@ CREATE TABLE `tema_contenido` (
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `tema_contenido`
---
-
-INSERT INTO `tema_contenido` (`Id`, `Tema`, `Id_Curso`) VALUES
-(7, 'Introduccion a Interfaces graficas', 38),
-(8, 'Introduccion al python', 42);
-
 -- --------------------------------------------------------
 
 --
@@ -243,15 +183,6 @@ CREATE TABLE `usuario` (
   `Id_Pago` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `usuario`
---
-
-INSERT INTO `usuario` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Fecha_nacimiento`, `Correo`, `Usuario`, `Contraseña`, `Foto`, `Id_Plan`, `Id_Pago`) VALUES
-(61, 'Jose', 'Rivas', '', '', 'admin@admin', 'jose', 'jose002', '', 0, 0),
-(62, 'vcbvc', 'bvcb', '', '', 'cvbvcbvc@gmela.com', 'bvcbvcb', 'vcghgfhgf', '', 0, 0),
-(63, 'jose', 'rivas', '', '', 'canservero@gmail.com', 'hola', 'hola1', '', 0, 0);
-
 -- --------------------------------------------------------
 
 --
@@ -268,16 +199,6 @@ CREATE TABLE `ventacurso` (
   `Id_Usuario` int(11) NOT NULL,
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `ventacurso`
---
-
-INSERT INTO `ventacurso` (`Id`, `Correo`, `ClaveTransaccion`, `PaypalDato`, `Fecha`, `Estado`, `Id_Usuario`, `Id_Curso`) VALUES
-(16, '', '', '', '2020-10-30 02:01:57', 'pagado', 61, 42),
-(17, '', '', '', '2020-10-30 15:16:34', 'pagado', 61, 38),
-(18, '', '', '', '2020-10-30 23:32:13', 'pagado', 63, 38),
-(19, '', '', '', '2020-10-31 00:13:47', 'pagado', 63, 42);
 
 --
 -- Índices para tablas volcadas
@@ -366,13 +287,13 @@ ALTER TABLE `ventacurso`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `carrera`
 --
 ALTER TABLE `carrera`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario`
@@ -390,13 +311,13 @@ ALTER TABLE `contenido`
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
@@ -408,19 +329,19 @@ ALTER TABLE `plan`
 -- AUTO_INCREMENT de la tabla `tema_contenido`
 --
 ALTER TABLE `tema_contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT de la tabla `ventacurso`
 --
 ALTER TABLE `ventacurso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Restricciones para tablas volcadas
@@ -444,7 +365,7 @@ ALTER TABLE `contenido`
 --
 ALTER TABLE `curso`
   ADD CONSTRAINT `curso_ibfk_1` FOREIGN KEY (`Id_Docente`) REFERENCES `docente` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `curso_ibfk_2` FOREIGN KEY (`Id_Carrera`) REFERENCES `carrera` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `curso_ibfk_2` FOREIGN KEY (`Id_Carrera`) REFERENCES `carrera` (`Id`);
 
 --
 -- Filtros para la tabla `tema_contenido`
