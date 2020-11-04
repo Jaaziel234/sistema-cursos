@@ -2,7 +2,8 @@
 <!----Barra lateral---->
 <?php include_once "templates/sidebar.php";   ?>
 <!----El back-end o logica---->
-<?php include_once "modulos/curso.php";   ?>
+<?php include_once "modulos/curso.php";   
+?>
 <!----Contenido para  mostrar----->
 <main class="app-content">
     <div class="app-title">
@@ -50,9 +51,16 @@
                             <div class="form-group">
                                 <label for="docente">Docente</label>
                                 <select class="form-control" id="docente" name="docente" required="">
-                                    <option value="<?php echo $docente ?>"><?php if($docente != ''){echo "Actualmente o cambiar";} ?></option>
                                     <?php foreach($resultadoDocente as $docente) : ?>
+                                    <!--Obtenemos la sesion del profesor->Id-->
+                                    <?php
+                                        //Guardamos los datos del docente para mostrarlos
+                                        $idDocente = $_SESSION['admin']['Id']; 
+                                        $nombreDocente = $_SESSION['admin']['Nombres'];
+                                    ?>
+                                    <?php if($idDocente == $docente['Id']):?>
                                     <option value="<?php echo $docente['Id']; ?>"><?php echo $docente['Nombres']." ".$docente['Apellidos']; ?></option>
+                                    <?php endif ?>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -91,13 +99,14 @@
                                             <th>Duración hora</th>
                                             <th>Precio</th>
                                             <th>Imagen</th>
-                                            <th>ID-Docente</th>
-                                            <th>ID-Carrera</th>
+                                            <th>Docente</th>
+                                            <th>Carrera</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($resultado as $data) : ?>
+                                        <?php if ($idDocente == $data['Id_Docente']):?>
                                         <tr>
                                             <th><?php echo $data['Id'] ?></th>
                                             <th><?php echo $data['Nombre'] ?></th>
@@ -106,8 +115,12 @@
                                             <th><?php echo $data['DuracionCurso'] ?></th>
                                             <th>$ <?php echo $data['Precio'] ?></th>
                                             <th><img style="width: 70px" src="./recursos/images/imgCurso/<?php echo $data['Imagen']; ?>"></th>
-                                            <th><?php echo $data['Id_Docente'] ?></th>
-                                            <th><?php echo $data['Id_Carrera'] ?></th>
+                                            <th><?php echo $nombreDocente ?></th>
+                                            <?php foreach($resultadoCarrera as $carrera) : ?>
+                                                <?php if($carrera['Id'] == $data['Id_Carrera']):?>
+                                                    <th><?php echo $carrera['Nombre'] ?></th>
+                                                <?php endif?>
+                                            <?php endforeach?>
                                             <th>
                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                     <input name="Id" type="hidden" value="<?php echo $data['Id'] ?>">
@@ -132,6 +145,7 @@
                                                 </form>
                                             </th>
                                         </tr>
+                                        <?php endif?>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>

@@ -4,7 +4,15 @@
 <!----Barra lateral---->
 <?php include_once "templates/sidebar.php";   ?>
 <!----El back-end o logica---->
-<?php include_once "modulos/temaContenido.php";   ?>
+<?php include_once "modulos/temaContenido.php";   
+//Obteniendo ID por GET desde vistaAgregarTemas.php
+$id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
+//Precargamos la vista->enviando ID del curso
+if (isset($_POST['accion'])) //Comrobacion envio de formulario
+{
+    echo "<script>window.setTimeout(function() { window.location = './vistaTema.php?id=$id_Curso' }, 10);</script>";
+}
+?>
 <!----Contenido para  mostrar----->
 <main class="app-content">
     <div class="app-title">
@@ -32,9 +40,13 @@
                             <div class="form-group">
                                 <label for="curso">Curso</label>
                                 <select class="form-control" id="curso" name="curso" required="">
-                                    <option value="<?php echo $curso ?>"><?php if($curso != ''){echo "Actualmente o cambiar";} ?></option>
-                                    <?php foreach($resultadoCurso as $curso) : ?>
+                                    <?php $curse; foreach($resultadoCurso as $curso) : ?>
+                                    <!--Selecccion de curso--->
+                                    <?php if($id_Curso == $curso['Id']):?>
+                                        <!--Guarda el curso para mostrar en tabla--->
+                                        <?php $curse = $curso['Nombre'] ?>
                                     <option value="<?php echo $curso['Id']; ?>"><?php echo $curso['Nombre']; ?></option>
+                                    <?php endif ?>
                                     <?php endforeach ?>
                                 </select>
                             </div>
@@ -58,16 +70,18 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Temario</th>
-                                            <th>Id Curso</th>
+                                            <th>Curso</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php foreach ($resultadoContenido as $data) : ?>
+                                            <!--Selecccion de curso--->
+                                        <?php if($id_Curso == $data['Id_Curso']):?>
                                         <tr>
                                             <th><?php echo $data['Id'] ?></th>
                                             <th><?php echo $data['Tema'] ?></th>
-                                            <th><?php echo $data['Id_Curso'] ?></th>
+                                            <th><?php echo $curse ?></th>
                                             <th>
                                                 <form action="" method="POST">
                                                     <input name="Id" type="hidden" value="<?php echo $data['Id'] ?>">
@@ -80,6 +94,7 @@
                                                 </form>
                                             </th>
                                         </tr>
+                                        <?php endif ?>
                                         <?php endforeach ?>
                                     </tbody>
                                 </table>

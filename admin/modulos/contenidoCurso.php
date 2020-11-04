@@ -1,5 +1,4 @@
 <?php
-$idDocente = "";
 include_once "../config/conexion.php";
 //Guardamos el ID del curso
 $id_Curso = isset($_POST['Id_Curso'])? $_POST['Id_Curso'] : "";
@@ -40,7 +39,7 @@ switch ($accion) {
         if ($sentencia){
             echo "<script>alert('Agregados')</script>";
             //header("Location:./vistaContenido.php");
-            echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
+            echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 10);</script>";
         }else{
             echo "<script>alert('Error al insertar los datos')</script>";
         }
@@ -66,7 +65,7 @@ switch ($accion) {
         $sentencia->bindParam(':Id',$Id);
         $sentencia->execute();
         //Redirigimos a la vista
-        echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
+        echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 10);</script>";
         break;
     case 'Actualizar':
         //Consulta para actualizar los datos de tabla cursos
@@ -102,7 +101,7 @@ switch ($accion) {
             $sentencia = $pdo->prepare($sql);
             $sentencia->execute(array($nombreVideo,$Id));
         }
-        echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 1000);</script>";
+        echo "<script>window.setTimeout(function() { window.location = './vistaContenido.php?id=$id_Curso' }, 10);</script>";
 
         break;
     default:

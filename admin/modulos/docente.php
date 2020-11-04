@@ -18,9 +18,13 @@ switch ($accion) {
         $sqlMostrar = "SELECT Usuario FROM docente WHERE Usuario=?";
         $sentencia = $pdo->prepare($sqlMostrar);
         $sentencia->execute(array($usuario));
-        if($sentencia->rowCount()>0){
+        //Comprobacion si no existe en administrador
+        $sqlMostrarAdmin = "SELECT Usuario FROM administrador WHERE Usuario=?";
+        $sentencia1 = $pdo->prepare($sqlMostrarAdmin);
+        $sentencia1->execute(array($usuario));
+        if($sentencia->rowCount()>0 || $sentencia1->rowCount() > 0){
             echo "<script>alert('Ya existe este usuario')</script>";
-            echo "<script>window.setTimeout(function() { window.location = '../vistaAgregarDocente.php' }, 1000);</script>";
+            header("Location:../vistaAgregarDocente.php");
         }else{
             $sql = "INSERT INTO docente (Nombres, Apellidos, Sexo, Usuario, Contraseña, Foto, Estado) VALUES(?,?,?,?,?,?,?)";
             //Agregando la fecha y moviendo el archivo a una carpeta especifica

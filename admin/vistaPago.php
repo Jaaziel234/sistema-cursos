@@ -3,18 +3,18 @@
 //<!----Barra lateral---->
 include_once "templates/sidebar.php";   
 //<!----El back-end o logica---->
-include_once "modulos/carrera.php";   
+include_once "modulos/pago.php";   
 ?>
 <!----Contenido para  mostrar----->
 <main class="app-content">
     <div class="app-title">
         <div>
             <h1><i class="fa fa-edit"></i> Administración</h1>
-            <p>Agregar carrera</p>
+            <p>Agregar pago</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Carreras</li>
+            <li class="breadcrumb-item">Pago</li>
             <li class="breadcrumb-item"><a href="#">Formulario</a></li>
         </ul>
     </div>
@@ -26,8 +26,8 @@ include_once "modulos/carrera.php";
                         <form action="" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="Id" value="<?php echo $Id ?>">
                             <div class="form-group">
-                                <label for="Nombres">Nombre de carrera</label>
-                                <input name="nombreCurso" class="form-control" id="Nombres" type="text" placeholder="Nombres" value="<?php echo $nombreCarrera ?>">
+                                <label for="pago">Pago</label>
+                                <input name="nombrePago" class="form-control" id="pago" type="text" placeholder="Ingresar pago" value="<?php echo $nombrePago ?>">
                             </div>
 
                             <div class="tile-footer">
@@ -42,13 +42,13 @@ include_once "modulos/carrera.php";
                     <!---Parte de la tabla ---->
                     <div class="col-12 col-sm-12 col-md-6">
                         <div class="tile">
-                            <h3 class="tile-title">Carreras</h3>
+                            <h3 class="tile-title">Pagos</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Nombre de carrera</th>
+                                            <th>Nombre del pago</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -61,7 +61,7 @@ include_once "modulos/carrera.php";
                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                     <input name="Id" type="hidden" value="<?php echo $data['Id'] ?>">
 
-                                                    <input name="nombreCurso" type="hidden" value="<?php echo $data['Nombre'] ?>">
+                                                    <input name="nombrePago" type="hidden" value="<?php echo $data['Nombre'] ?>">
 
                                                     <input class="btn btn-success" type="submit" name="seleccionar" value="seleccionar">
                                                     <button class="btn btn-danger" type="submit" name="accion" value="Eliminar">Eliminar</button>

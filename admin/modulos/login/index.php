@@ -4,7 +4,6 @@ include_once '../../../config/conexion.php';
 $usuario = isset($_POST['usuario'])? $_POST['usuario'] : "";
 $clave = isset($_POST['clave'])? $_POST['clave'] : "";
 //$opcion = isset($_POST['opcion']) ? $_POST['opcion'] : '';
-
 //SQL para los casos de sesion
 $sqlDocente = "SELECT * FROM docente WHERE Usuario=:usuario AND Contraseña=:clave";
 $sqlAdmin = "SELECT * FROM administrador WHERE Usuario=:usuario AND Contraseña=:clave";

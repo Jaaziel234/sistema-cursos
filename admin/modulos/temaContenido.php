@@ -1,5 +1,4 @@
 <?php
-$idDocente = "";
 include_once "../config/conexion.php";
 
 //Datos enviados desde el formulario, obteniendo por metodo POST
@@ -22,7 +21,6 @@ switch ($accion) {
         //Comprobando si se insertaron
         if ($sentencia){
             echo "<script>alert('Agregados')</script>";
-            echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
         }else{
             echo "<script>alert('Error al insertar los datos')</script>";
         }
@@ -34,16 +32,12 @@ switch ($accion) {
         $sentencia  = $pdo->prepare($sql);
         $sentencia->bindParam(':Id',$Id);
         $sentencia->execute();
-        //Redirigimos a la vista
-        echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
         break;
     case 'Actualizar':
         //Consulta para actualizar los datos de tabla carrera
         $sql = "UPDATE tema_contenido SET Tema=?,Id_Curso=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
         $sentencia->execute(array($temaContenido,$curso,$Id));
-        echo "<script>window.setTimeout(function() { window.location = './vistaTema.php' }, 1000);</script>";
-
         break;
     default:
         # code...
