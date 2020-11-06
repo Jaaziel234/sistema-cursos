@@ -17,7 +17,7 @@ switch ($accion) {
         $sentencia->execute(array($nombrePlan,$descripcion,$precio));
         //Comprando si se insertaron
         if ($sentencia){
-            echo "<script>window.setTimeout(function() { window.location = './vistaPlan.php' }, 1000);</script>";
+            echo "<script>window.setTimeout(function() { window.location = './vistaPlan.php' }, 10);</script>";
         }else{
             echo "<script>alert('Error')</script>";
         }
@@ -32,21 +32,20 @@ switch ($accion) {
         $sentencia->bindParam(':Id',$Id);
         $sentencia->execute();
         //Redirigimos a la vista
-        echo "<script>window.setTimeout(function() { window.location = './vistaPlan.php' }, 1000);</script>";
+        echo "<script>window.setTimeout(function() { window.location = './vistaPlan.php' }, 10);</script>";
         break;
     case 'Actualizar':
         $sql = "UPDATE plan SET Tipo_plan=?,Descripcion=?,Precio=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
-        $sentencia->execute(array($nombrePlan,$descripcion,$precio));
-
-        header("Location:../vistaPlan.php");
-
+        $sentencia->execute(array($nombrePlan,$descripcion,$precio,$Id));
+        echo "<script>window.setTimeout(function() { window.location = './vistaPlan.php' }, 10);</script>";
+        
         break;
     default:
         # code...
         break;
 }
-$sqlmostrar = "select * from plan";
+$sqlmostrar = "SELECT * FROM plan ORDER BY Id ASC";
 $sql = $pdo->prepare($sqlmostrar);
 $sql->execute();
 $sqlDatos = $sql->fetchAll(PDO::FETCH_ASSOC);
