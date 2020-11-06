@@ -38,15 +38,14 @@ switch ($accion) {
         $sql = "UPDATE plan SET Tipo_plan=?,Descripcion=?,Precio=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
         $sentencia->execute(array($nombrePlan,$descripcion,$precio));
-
-        header("Location:../vistaPlan.php");
-
+        echo "<script>window.setTimeout(function() { window.location = './vistaPlan.php' }, 1000);</script>";
+        
         break;
     default:
         # code...
         break;
 }
-$sqlmostrar = "select * from plan";
+$sqlmostrar = "SELECT * FROM plan ORDER BY Id ASC";
 $sql = $pdo->prepare($sqlmostrar);
 $sql->execute();
 $sqlDatos = $sql->fetchAll(PDO::FETCH_ASSOC);
