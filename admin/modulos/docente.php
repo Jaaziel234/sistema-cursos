@@ -76,6 +76,10 @@ switch ($accion) {
         header("Location:../vistaDocente.php");
         break;
     case 'Actualizar':
+        //Sirve para actualizar desde su perfil y validar si es el docente su estado siempre sera activo
+        if(isset($_GET['update'])){
+            $estado = 1;
+        }
         $sql = "UPDATE docente SET Nombres=?,Apellidos=?,Sexo=?,Usuario=?,Contraseña=?,Estado=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
         $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$estado,$Id));
@@ -107,7 +111,13 @@ switch ($accion) {
             $sentencia = $pdo->prepare($sql);
             $sentencia->execute(array($nombreFoto,$Id)); 
         }
-        header("Location:../vistaDocente.php");
+        //Si existe esta peticion redireccionar a 
+        if(isset($_GET['update'])){
+            echo "<script>alert('Vuelve a iniciar sesión para ver los cambios')</script>";
+            header("Location:../vistaPerfil.php");
+        }else{
+            header("Location:../vistaDocente.php");
+        }
 
         break;
     default:
