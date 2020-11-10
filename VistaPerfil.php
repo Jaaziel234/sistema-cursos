@@ -32,7 +32,7 @@
    
            if ($tmpFoto != ''){
                //Funcion para mover la foto
-               move_uploaded_file($tmpFoto,"../recursos/images/fotoDocente/".$nombreFoto);
+               move_uploaded_file($tmpFoto,"./admin/recursos/images/fotoUsuario/".$nombreFoto);
                //para borrar la foto de la carpeta donde se guardan
                $sentencia=$pdo->prepare("SELECT Foto FROM usuario WHERE Id=:Id");
                $sentencia->bindParam(':Id',$Id);
@@ -43,8 +43,8 @@
    
                if(isset($fila["Foto"])){
                    //Comprobamos si existe
-                   if (file_exists("../recursos/images/fotoDocente/".$fila["Foto"])) {
-                       unlink("../recursos/images/fotoDocente/".$fila["Foto"]);
+                   if (file_exists("./admin/recursos/images/fotoUsuario/".$fila["Foto"])) {
+                       unlink("./admin/recursos/images/fotoUsuario/".$fila["Foto"]);
                    }
                }
                $sql = "UPDATE usuario SET Foto=? WHERE Id=?";

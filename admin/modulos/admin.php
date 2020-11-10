@@ -27,7 +27,7 @@ switch ($accion) {
             //Consulta SQL
             $sentencia = $pdo->prepare($sql);
             //Pasando los dat90os
-            $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,$claveAdmin));
+            $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,password_hash($claveAdmin, PASSWORD_DEFAULT)));
             //Comprando si se insertaron
             if ($sentencia){
                 echo "<script>window.setTimeout(function() { window.location = './vistaAdmin.php' }, 10);</script>";
@@ -51,7 +51,7 @@ switch ($accion) {
     case 'Actualizar':
         $sql = "UPDATE administrador SET Nombres=?,Apellidos=?,Usuario=?,Contraseña=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
-        $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,$claveAdmin,$Id));
+        $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,password_hash($claveAdmin, PASSWORD_DEFAULT),$Id));
 
         echo "<script>window.setTimeout(function() { window.location = './vistaAdmin.php' }, 10);</script>";
 

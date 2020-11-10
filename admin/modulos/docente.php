@@ -41,7 +41,7 @@ switch ($accion) {
             //Consulta SQL
             $sentencia = $pdo->prepare($sql);
             //Pasando los datos
-            $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$nombreFoto,$estado));
+            $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,password_hash($clave, PASSWORD_DEFAULT),$nombreFoto,$estado));
             //Comprando si se insertaron
             if ($sentencia){
                 header("Location:../vistaAgregarDocente.php");

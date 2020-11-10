@@ -10,7 +10,7 @@
                <h3 class="text-center">TU PERFIL</h3>
                <div class="card">
                   <div class="d-flex justify-content-center">
-                     <?php if(isset($_SESSION['usuario'])):?><img style="width: 150px" class="" src="./recursos/images/fotoDocente/<?php echo $_SESSION['usuario']['Foto']; ?>" alt="User Image"><?php else:?><img style="width: 100px" class="app-sidebar__user-avatar bg-light" src="./recursos/images/fotoDocente/linux-logo.png" alt="User Image">
+                     <?php if(isset($_SESSION['usuario'])):?><img style="width: 150px" class="" src="admin/recursos/images/fotoUsuario/<?php echo $_SESSION['usuario']['Foto']; ?>" alt="User Image"><?php else:?><img style="width: 100px" class="app-sidebar__user-avatar bg-light" src="./admin/recursos/images/fotoDocente/linux-logo.png" alt="User Image">
                      <?php endif?>  
                   </div>
                   <div class="card-body d-flex justify-content-center flex-column">
@@ -54,7 +54,7 @@
                   </div>
                   <div class="form-group">
                      <label for="Fecha_nacimiento">Fecha de Nacimiento</label>
-                     <input name="Fecha_nacimiento" class="form-control" id="Fecha_nacimiento" type="text" value="<?php echo $_SESSION['usuario']['Fecha_nacimiento']; ?>">
+                     <input name="Fecha_nacimiento" class="form-control" id="Fecha_nacimiento" type="date" step="1"> value="<?php echo $_SESSION['usuario']['Fecha_nacimiento']; ?>">
                   </div>
                   <div class="form-group">
                      <label for="Correo">Correo</label>
