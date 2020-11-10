@@ -54,7 +54,7 @@
                   </div>
                   <div class="form-group">
                      <label for="Fecha_nacimiento">Fecha de Nacimiento</label>
-                     <input name="Fecha_nacimiento" class="form-control" id="Fecha_nacimiento" type="date" step="1"> value="<?php echo $_SESSION['usuario']['Fecha_nacimiento']; ?>">
+                     <input name="Fecha_nacimiento" min="1920-01-01" class="form-control" id="Fecha_nacimiento" type="date" value="<?php echo $_SESSION['usuario']['Fecha_nacimiento']; ?>">
                   </div>
                   <div class="form-group">
                      <label for="Correo">Correo</label>
