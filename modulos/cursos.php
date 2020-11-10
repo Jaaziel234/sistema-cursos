@@ -11,9 +11,18 @@ $sql = "SELECT * FROM curso LIMIT 3";
 $sentencia = $pdo->prepare($sql);
 $sentencia->execute();
 $resultadoCursos = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-//Trayendo de la base de datos los temas(En desarrollo)
-$sql = "SELECT * FROM tema_contenido";
+//Trayendo de la base de datos los temas()
+$sql = "SELECT * FROM curso INNER JOIN tema_contenido ON tema_contenido.Id_Curso = curso.Id";
 $sentencia = $pdo->prepare($sql);
 $sentencia->execute();
 $resultadoTemas = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+/*
+***************Consulta para comprobar si ya ha comprado el curso**************
+*/
+
+$consultaSQL = "SELECT Id_Usuario,Id_Curso FROM ventacurso";
+$sentencia = $pdo->prepare($consultaSQL);
+$sentencia->execute();
+$comprabacionCurso = $sentencia->fetchAll(PDO::FETCH_ASSOC);
 ?>

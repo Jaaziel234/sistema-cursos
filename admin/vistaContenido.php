@@ -61,8 +61,10 @@ $id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
                             <div class="form-group">
                                 <label for="cursoId">Curso</label>
                                 <select class="form-control" id="cursoId" name="cursoId" required="">
-                                    <?php foreach($resultado as $fila) : ?>
+                                    <?php $curso; foreach($resultado as $fila) : ?>
                                     <?php if($fila['Id'] == $id_Curso) :?>
+                                        <!---Guarda el nombre del curso para mostrarlo en la tabla-->
+                                        <?php $curso = $fila['Nombre'] ?>
                                     <option value="<?php echo $fila['Id']; ?>"><?php echo $fila['Nombre']; ?></option>
                                     <?php endif ?>
                                     <?php endforeach ?>
@@ -94,7 +96,7 @@ $id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
                                             <th>Descripción</th>
                                             <th>Duración de video</th>
                                             <th>Video</th>
-                                            <th>ID-Curso</th>
+                                            <th>Curso</th>
                                             <th>Acciones</th>
                                         </tr>
                                     </thead>
@@ -108,7 +110,7 @@ $id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
                                             <th><?php echo $data['Descripcion'] ?></th>
                                             <th><?php echo $data['DuracionVideo'] ?></th>
                                             <th><?php echo $data['Video'] ?></th>
-                                            <th><?php echo $data['Id_Curso'] ?></th>
+                                            <th><?php echo $curso ?></th>
                                             <th>
                                                 <form action="" method="POST" enctype="multipart/form-data">
                                                     <input name="Id" type="hidden" value="<?php echo $data['Id'] ?>">

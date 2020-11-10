@@ -18,9 +18,13 @@ switch ($accion) {
         $sqlMostrar = "SELECT Usuario FROM docente WHERE Usuario=?";
         $sentencia = $pdo->prepare($sqlMostrar);
         $sentencia->execute(array($usuario));
-        if($sentencia->rowCount()>0){
+        //Comprobacion si no existe en administrador
+        $sqlMostrarAdmin = "SELECT Usuario FROM administrador WHERE Usuario=?";
+        $sentencia1 = $pdo->prepare($sqlMostrarAdmin);
+        $sentencia1->execute(array($usuario));
+        if($sentencia->rowCount()>0 || $sentencia1->rowCount() > 0){
             echo "<script>alert('Ya existe este usuario')</script>";
-            echo "<script>window.setTimeout(function() { window.location = '../vistaAgregarDocente.php' }, 1000);</script>";
+            header("Location:../vistaAgregarDocente.php");
         }else{
             $sql = "INSERT INTO docente (Nombres, Apellidos, Sexo, Usuario, Contraseña, Foto, Estado) VALUES(?,?,?,?,?,?,?)";
             //Agregando la fecha y moviendo el archivo a una carpeta especifica
@@ -37,7 +41,7 @@ switch ($accion) {
             //Consulta SQL
             $sentencia = $pdo->prepare($sql);
             //Pasando los datos
-            $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$nombreFoto,$estado));
+            $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,password_hash($clave, PASSWORD_DEFAULT),$nombreFoto,$estado));
             //Comprando si se insertaron
             if ($sentencia){
                 header("Location:../vistaAgregarDocente.php");
@@ -72,6 +76,10 @@ switch ($accion) {
         header("Location:../vistaDocente.php");
         break;
     case 'Actualizar':
+        //Sirve para actualizar desde su perfil y validar si es el docente su estado siempre sera activo
+        if(isset($_GET['update'])){
+            $estado = 1;
+        }
         $sql = "UPDATE docente SET Nombres=?,Apellidos=?,Sexo=?,Usuario=?,Contraseña=?,Estado=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
         $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$estado,$Id));
@@ -103,7 +111,13 @@ switch ($accion) {
             $sentencia = $pdo->prepare($sql);
             $sentencia->execute(array($nombreFoto,$Id)); 
         }
-        header("Location:../vistaDocente.php");
+        //Si existe esta peticion redireccionar a 
+        if(isset($_GET['update'])){
+            echo "<script>alert('Vuelve a iniciar sesión para ver los cambios')</script>";
+            header("Location:../vistaPerfil.php");
+        }else{
+            header("Location:../vistaDocente.php");
+        }
 
         break;
     default:

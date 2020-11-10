@@ -10,12 +10,12 @@
     <div class="app-title">
         <div>
             <h1><i class="fa fa-edit"></i> Administración</h1>
-            <p>Agregar carrera</p>
+            <p>Agregar planes</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Forms</li>
-            <li class="breadcrumb-item"><a href="#">Form Components</a></li>
+            <li class="breadcrumb-item">Planes</li>
+            <li class="breadcrumb-item"><a href="#">Formulario</a></li>
         </ul>
     </div>
     <div class="row">

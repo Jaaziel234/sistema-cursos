@@ -16,10 +16,10 @@ $Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
                 <p class="text-white">Fecha de lanzamiento: <?php echo $curso['Fecha']; ?></p>
                 <p class="text-white">Descripción: <?php echo $curso['Descripcion']; ?></p>
                 <p class="text-white">Duracíón aproximado: <?php echo $curso['DuracionCurso']; ?> hrs</p>
-                <a class="btn btn-primary" href="#" >¡Toma el curso ahora!</a>
+                <a class="btn btn-primary" href="validacion.php?id=<?php echo $curso['Id']; ?>" >¡Toma el curso ahora!</a>
             </div>
-            <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center">
-                <img class="img-fluid rounded" width="80%" src="./admin/recursos/images/imgCurso/<?php echo $curso['Imagen']; ?>" alt="">
+            <div class="col-12 col-sm-12 col-md-6 d-flex align-items-center mb-4 my-sm-4">
+                <img class="img-fluid rounded" src="./admin/recursos/images/imgCurso/<?php echo $curso['Imagen']; ?>" alt="">
             </div>
             <?php endif ?>
             <?php endforeach ?>
@@ -27,17 +27,20 @@ $Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
     </div>
 </header>
 <section class="bg-light">
-    <div class="container py-4">
+    <div class="container">
         <h2>Temario del curso</h2>
         <div class="row">
-            <?php foreach ($resultadoTemas as $tema): ?>
+            <?php $nombreDocente; foreach ($resultadoTemas as $tema): ?>
             <?php if ($tema['Id_Curso'] == $Id): ?>
-            <div class="col-12 col-sm-12 col-md-8 my-3">
+            <?php $nombreDocente = $curso['Nombres'] ?>
+            <div class="col-12 col-sm-12 col-md-8 my-0">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item"><h5><?php echo $tema['Tema'] ?></h5></li>
                 </ul>
             </div>
-            <div class="col-12 col-sm-12 col-md-4 my-3">
+            <?php endif ?>
+            <?php endforeach ?>
+            <div class="col-12 col-sm-12 col-md-4 my-0 d-flex justify-content-center">
                 <div class="card" style="width: 15rem;">
                     <img class="img-thumbnail rounded-circle" src="./admin/recursos/images/fotoDocente/<?php echo $curso['Foto']; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
@@ -46,8 +49,6 @@ $Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
                     </div>
                 </div>
             </div>
-            <?php endif ?>
-            <?php endforeach ?>
         </div>
     </div>
 </section>  

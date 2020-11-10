@@ -47,7 +47,13 @@ include_once "templates/header.php";?>
                                 <th><?php echo $data['Usuario'] ?></th>
                                 <th><?php echo $data['Contraseña'] ?></th>
                                 <th><img style="width: 70px" src="./recursos/images/fotoDocente/<?php echo $data['Foto'] ?>"></th>
-                                <th><?php echo $data['Estado'] ?></th>
+                                <th>
+                                    <?php if($data['Estado'] == 1):  ?>
+                                        Activo
+                                    <?php else: ?>
+                                        Desactivado
+                                    <?php endif?>
+                                </th>
                                 <th>
                                     <form action="modulos/docente.php" method="POST">
                                         <input hidden="" type="number" name="Id" value="<?php echo $data['Id']; ?>">

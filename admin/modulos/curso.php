@@ -1,5 +1,4 @@
 <?php
-$idDocente = "";
 include_once "../config/conexion.php";
 //Datos enviados desde el formulario, obteniendo por metodo POST
 $Id = isset($_POST['Id'])? $_POST['Id'] : ""; //Sirve para actualizar y eliminar
@@ -37,7 +36,7 @@ switch ($accion) {
         //Comprando si se insertaron
         if ($sentencia){
             echo "<script>alert('Agregados')</script>";
-            echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 1000);</script>";
+            echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 10);</script>";
         }else{
             echo "<script>alert('Error al insertar los datos')</script>";
         }
@@ -63,7 +62,7 @@ switch ($accion) {
         $sentencia->bindParam(':Id',$Id);
         $sentencia->execute();
         //Redirigimos a la vista
-        echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 1000);</script>";
+        echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 10);</script>";
         break;
     case 'Actualizar':
         //Consulta para actualizar los datos de tabla cursos
@@ -99,7 +98,7 @@ switch ($accion) {
             $sentencia = $pdo->prepare($sql);
             $sentencia->execute(array($nombreFoto,$Id));
         }
-        echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 1000);</script>";
+        echo "<script>window.setTimeout(function() { window.location = './vistaCurso.php' }, 10);</script>";
 
         break;
     default:
