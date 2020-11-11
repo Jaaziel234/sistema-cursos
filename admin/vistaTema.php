@@ -22,8 +22,8 @@ if (isset($_POST['accion'])) //Comrobacion envio de formulario
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Forms</li>
-            <li class="breadcrumb-item"><a href="#">Form Components</a></li>
+            <li class="breadcrumb-item">Tema</li>
+            <li class="breadcrumb-item"><a href="#">Formulario</a></li>
         </ul>
     </div>
     <div class="row">
