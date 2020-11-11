@@ -17,8 +17,8 @@ $id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
-            <li class="breadcrumb-item">Forms</li>
-            <li class="breadcrumb-item"><a href="#">Form Components</a></li>
+            <li class="breadcrumb-item">Contenidos</li>
+            <li class="breadcrumb-item"><a href="#">Agregar</a></li>
         </ul>
     </div>
     <div class="row">
