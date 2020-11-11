@@ -16,7 +16,7 @@ include_once "modulos/contenidoCurso.php";
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
             <li class="breadcrumb-item">Vista de cursos</li>
-            <li class="breadcrumb-item"><a href="#">Form Components</a></li>
+            <li class="breadcrumb-item"><a href="#">Agregar</a></li>
         </ul>
     </div>
     <div class="row">
