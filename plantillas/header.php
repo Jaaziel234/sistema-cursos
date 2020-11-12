@@ -39,7 +39,7 @@ if(!isset($_SESSION)){
                             <a class="nav-link" href="cursos.php">CURSOS <i class="icon ion-ios-arrow-forward icon-mobile"></i></a>
                         </li>
                         <li class="nav-item nav-custom-link">
-                            <a class="nav-link" href=" ">PREMIUM <i class="icon ion-ios-arrow-forward icon-mobile"></i></a>
+                            <a class="nav-link" href="planes.php">PREMIUM <i class="icon ion-ios-arrow-forward icon-mobile"></i></a>
                         </li>
                         <?php if(!isset($_SESSION['usuario'])) { ?>
                         <li class="nav-item nav-custom-link">
@@ -49,6 +49,9 @@ if(!isset($_SESSION)){
                             <a class="nav-link" href="registrarse.php">REGISTRARSE</a>
                         </li>
                         <?php }else{ ?>
+                        <li class="nav-item nav-custom-link">
+                            <a class="nav-link" href="misCursos.php">MIS CURSOS</a>
+                        </li>
                         <li class="nav-item nav-custom-link btn btn-demo-small">
                             <a class="nav-link" href="perfilUsuario.php">PERFIL <i class="fas fa-user-circle fa-2x fa-lg"></i></a>
                         </li>
