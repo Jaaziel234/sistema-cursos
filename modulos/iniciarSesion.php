@@ -6,19 +6,17 @@ $clave = isset($_POST['clave'])? $_POST['clave'] : "";
 //Comprobación de envio
 if (isset($_POST['enviar'])){
 	//Consulta SQL
-	$sqlUser = "SELECT * FROM usuario WHERE Usuario=:usuario AND Contraseña=:clave";
+	$sqlUser = "SELECT * FROM usuario WHERE Usuario=:usuario";
 
 	//Ejecutando consulta 
 	$resultado = $pdo->prepare($sqlUser);
 	$resultado->bindParam(':usuario', $usuario,PDO::PARAM_STR);
-	$resultado->bindParam(':clave', $clave, PDO::PARAM_STR);
 	$resultado->execute();
 	//La consulta para obtener los datos devueltos 
 	$loginUser = $resultado->fetch(PDO::FETCH_ASSOC);
-
-	if ($resultado->rowCount() > 0){
-	    //Iniciamos la session de usuario 
-	    session_start();
+	$pass_hash = $loginUser['Contraseña'];
+	if(password_verify($clave, $pass_hash)){
+		session_start();
 	    $_SESSION['usuario'] = $loginUser;
 	    header("Location:index.php");
 	}else{

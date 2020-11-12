@@ -6,18 +6,20 @@ $apellido=isset($_POST['apellidos']) ? $_POST['apellidos'] : '';
 $correo=isset($_POST['correo']) ? $_POST['correo'] : '';
 $usuario=isset($_POST['usuario']) ? $_POST['usuario'] : '';
 $clave=isset($_POST['clave']) ? $_POST['clave'] : '';
+//Cifrar password
+$clave_cifrada = password_hash($clave, PASSWORD_DEFAULT);
 //Comprobacion de usuarios
 $selectSQL = "SELECT * FROM usuario WHERE Correo=? OR Usuario=?";
 $sentencia = $pdo->prepare($selectSQL);
 $sentencia->execute(array($correo,$usuario));
 if ($sentencia->rowCount() > 0){
-	echo "<script>alert('Ya existe un usuario con el correo')</script>";
+	echo "<script>alert('Ya existe un usuario o el correo ya esta registrado')</script>";
 }else if (isset($_POST['accion'])){
 	//Consulta SQL
 	$sql = "INSERT INTO usuario(Nombres,Apellidos,Correo,Usuario,Contraseña) VALUES(?,?,?,?,?)";
 	//Comprobación de INSERT DATA
 	$consulta=$pdo->prepare($sql);
-	if ($consulta->execute(array($nombre,$apellido,$correo,$usuario,$clave))){
+	if ($consulta->execute(array($nombre,$apellido,$correo,$usuario,$clave_cifrada))){
 		echo "<script>alert('Registrado')</script>";
 		echo "<script>window.setTimeout(function() { window.location = './index.php' }, 100);</script>";
 	}
