@@ -32,7 +32,7 @@
          </div>
          <div class="col-12 col-sm-12 col-md-8">
             <div class="tile">
-               <form action="VistaPerfil.php" method="POST" enctype="multipart/form-data">
+               <form action="modulos/PerfilDelUsuario.php" method="POST" enctype="multipart/form-data">
                   <div class="form-group">
                      <input hidden="" name="Id" class="form-control" id="Nombres" type="text" value="<?php echo $_SESSION['usuario']['Id']; ?>">
                   </div>
@@ -54,7 +54,7 @@
                   </div>
                   <div class="form-group">
                      <label for="Fecha_nacimiento">Fecha de Nacimiento</label>
-                     <input name="Fecha_nacimiento" class="form-control" id="Fecha_nacimiento" type="text" value="<?php echo $_SESSION['usuario']['Fecha_nacimiento']; ?>">
+                     <input name="Fecha_nacimiento" min="1920-01-01" class="form-control" id="Fecha_nacimiento" type="date" value="<?php echo $_SESSION['usuario']['Fecha_nacimiento']; ?>">
                   </div>
                   <div class="form-group">
                      <label for="Correo">Correo</label>
