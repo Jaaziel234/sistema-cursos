@@ -13,7 +13,7 @@ $id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
     <div class="app-title">
         <div>
             <h1><i class="fa fa-edit"></i> Administración</h1>
-            <p>Agregar docentes</p>
+            <p>Agregar contenidos</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -52,7 +52,7 @@ $id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
                             </div>
                             <div class="form-group">
                                 <label for="duracion">Duración de video</label>
-                                <input min="0" max="100" name="duracion" class="form-control" id="duracion" type="number" placeholder="Precio del curso" value="<?php echo $duracion ?>">
+                                <input min="0" max="100" name="duracion" class="form-control" id="duracion" type="number" placeholder="Horas" value="<?php echo $duracion ?>">
                             </div>
                             <div class="form-group">
                                 <label for="video">Video</label>
