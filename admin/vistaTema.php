@@ -18,7 +18,7 @@ if (isset($_POST['accion'])) //Comrobacion envio de formulario
     <div class="app-title">
         <div>
             <h1><i class="fa fa-edit"></i> Administración de Temario</h1>
-            <p>Agregar carrera</p>
+            <p>Agregar nombre de tema</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -34,7 +34,7 @@ if (isset($_POST['accion'])) //Comrobacion envio de formulario
                         <form action="" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="Id" value="<?php echo $Id ?>">
                             <div class="form-group">
-                                <label for="temaContenido">Nombre de contenido</label>
+                                <label for="temaContenido">Nombre de tema</label>
                                 <input name="temaContenido" class="form-control" id="temaContenido" type="text" placeholder="Nombre de tema" value="<?php echo $temaContenido ?>">
                             </div>
                             <div class="form-group">
@@ -63,7 +63,7 @@ if (isset($_POST['accion'])) //Comrobacion envio de formulario
                     <!---Parte de la tabla ---->
                     <div class="col-md-12">
                         <div class="tile">
-                            <h3 class="tile-title">Carreras</h3>
+                            <h3 class="tile-title">Temas de Cursos</h3>
                             <div class="table-responsive">
                                 <table class="table table-striped">
                                     <thead>
