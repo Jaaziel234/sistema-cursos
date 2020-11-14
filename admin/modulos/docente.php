@@ -7,6 +7,8 @@ $apellidos = isset($_POST['Apellidos']) ? $_POST['Apellidos'] : "";
 $sexo = isset($_POST['Sexo']) ? $_POST['Sexo'] : "";
 $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : "";
 $clave = isset($_POST['Clave']) ? $_POST['Clave'] : "";
+//Encriptando clave
+$claveHash = password_hash($clave, PASSWORD_DEFAULT);
 $foto = isset($_FILES['Foto']['name']) ? $_FILES['Foto'] : "";
 $estado = isset($_POST['Estado']) ? $_POST['Estado'] : "";
 //Input segun la opcion hacer
@@ -41,7 +43,7 @@ switch ($accion) {
             //Consulta SQL
             $sentencia = $pdo->prepare($sql);
             //Pasando los datos
-            $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,password_hash($clave, PASSWORD_DEFAULT),$nombreFoto,$estado));
+            $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$claveHash,$nombreFoto,$estado));
             //Comprando si se insertaron
             if ($sentencia){
                 header("Location:../vistaAgregarDocente.php");
@@ -82,7 +84,7 @@ switch ($accion) {
         }
         $sql = "UPDATE docente SET Nombres=?,Apellidos=?,Sexo=?,Usuario=?,Contraseña=?,Estado=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
-        $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$clave,$estado,$Id));
+        $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$claveHash,$estado,$Id));
         //Movemos la imagen
         $fecha = new DateTime();
         //Seleecionamos el nombre del archivo
