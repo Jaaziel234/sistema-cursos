@@ -9,7 +9,7 @@
     <div class="app-title">
         <div>
             <h1><i class="fa fa-edit"></i> Administración</h1>
-            <p>Agregar docentes</p>
+            <p>Agregar cursos</p>
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
