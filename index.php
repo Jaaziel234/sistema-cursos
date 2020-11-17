@@ -14,7 +14,7 @@ include_once "plantillas/header.php";
                 <span>BIENVENIDOS</span>
                 <h1>CODERZOOM</h1>
                 <p>La plataforma de apredizaje para desarrolladores</p>
-                <a href="#" class="btn btn-regular">Leer mas</a>
+                <a href="#info" class="btn btn-regular">Leer mas</a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@ include_once "plantillas/header.php";
 </section>
 <!----Fin informacion--->
 <section id="ver">
-    <div class="container">
+    <div class="container" id="info">
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="section-title">
