@@ -49,7 +49,7 @@ include_once "plantillas/header.php";
             <div class="col-md-4 col-sm-6">
                 <div class="ver-thumb">
                     <div class="ver-title">
-                        <h3>Estudia a tu ritmo</h3>
+                        <h3 class="text-center">Estudia a tu ritmo</h3>
                     </div>
                     <div class="ver-info">
                         <p>Programar no tiene que ser tan dificil. Aprende los fundamentos desde cero y obtén una base sólida.</p>
@@ -60,7 +60,7 @@ include_once "plantillas/header.php";
             <div class="col-md-4 col-sm-6">
                 <div class="ver-thumb">
                     <div class="ver-title">
-                        <h3>Prepárate para el futuro</h3>
+                        <h3 class="text-center">Prepárate para el futuro</h3>
                     </div>
                     <div class="ver-info">
                         <p>Te damos el poder para alcanzar tus sueños a través de la educación</p>
@@ -71,7 +71,7 @@ include_once "plantillas/header.php";
             <div class="col-md-4 col-sm-6">
                 <div class="ver-thumb">
                     <div class="ver-title">
-                        <h3>Aprende desde 0</h3>
+                        <h3 class="text-center">Aprende desde 0</h3>
                     </div>
                     <div class="ver-info">
                         <p>Consigue las habilidades que tu carrera profesional necesita.</p>

@@ -26,10 +26,10 @@
             </div>
             <div class="col-md-3">
                 <h5>CODERZOOM</h5>
-                <li><a href="cursos.php">Cursos</a></li>
-                <li><a href="registrarse.php">Registrarse</a></li>
-                <li><a href="iniciarSesion.php">Iniciar sesion</a></li>
-                <li><a href="planes.php">Premium</a></li>
+                <li><a class="text-light" href="cursos.php">Cursos</a></li>
+                <li><a class="text-light" href="registrarse.php">Registrarse</a></li>
+                <li><a class="text-light" href="iniciarSesion.php">Iniciar sesion</a></li>
+                <li><a class="text-light" href="planes.php">Premium</a></li>
             </div>
         </div> 
         <div class="divider"></div>
