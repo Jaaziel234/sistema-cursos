@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-11-2020 a las 21:44:56
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.2.29
+-- Tiempo de generación: 17-11-2020 a las 06:27:44
+-- Versión del servidor: 10.4.6-MariaDB
+-- Versión de PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -42,7 +43,8 @@ CREATE TABLE `administrador` (
 
 INSERT INTO `administrador` (`Id`, `Nombres`, `Apellidos`, `Usuario`, `Contraseña`, `Estado`) VALUES
 (1, 'Admin', 'administrador', 'admin', '$2y$10$MrFTzEpZrijq3S6Dd/2xyO3Aisek7dMTYLCh2ZjO8VBRvZ4qUWGKW', 1),
-(2, 'José', 'Rivera', 'jose', '$2y$10$Ao7ONXzrYyZeon3On5DmXOjR7KV4q64g26SK3/AJB7eWb.cPmEZOS', 1);
+(2, 'José', 'Rivera', 'jose', '$2y$10$Ao7ONXzrYyZeon3On5DmXOjR7KV4q64g26SK3/AJB7eWb.cPmEZOS', 1),
+(3, 'Diana', 'Barillas', 'diana3', '$2y$10$KY1TAVO1gbVmInBSfeZRH.RJA0iWGm6S9CRO7XdWHVLXbQzRuo0ea', 1);
 
 -- --------------------------------------------------------
 
@@ -60,7 +62,9 @@ CREATE TABLE `carrera` (
 --
 
 INSERT INTO `carrera` (`Id`, `Nombre`) VALUES
-(12, 'Curso de PHP');
+(12, 'Curso de PHP'),
+(13, 'Licenciatura en ciencias de la computación'),
+(14, 'Lic. En Trabajo Social');
 
 -- --------------------------------------------------------
 
@@ -99,7 +103,9 @@ CREATE TABLE `contenido` (
 
 INSERT INTO `contenido` (`Id`, `Temas`, `Nombre`, `Descripcion`, `DuracionVideo`, `Video`, `Id_Curso`) VALUES
 (38, 'Introduccion a PHP', 'gfhfhgfhfg', 'hfghgfhfghgfhgfhgfhgfh', '6', '1605026903_1.Introducción a interfaces gráficas con Tkinter   Frame  Código nativo.mp4', 48),
-(39, 'Introduccion a PHP Y SQL', 'fghfghfghgfh', 'fghfghfghgfhgfh', '6', '1605026916_1.Introducción a interfaces gráficas con Tkinter   Frame  Código nativo.mp4', 48);
+(39, 'Introduccion a PHP Y SQL', 'fghfghfghgfh', 'fghfghfghgfhgfh', '6', '1605026916_1.Introducción a interfaces gráficas con Tkinter   Frame  Código nativo.mp4', 48),
+(40, 'Introducción a la programación ', 'Video ciclo  while y do while', 'Las estructuras repetitivas (bucles) son aquellas ', '2', '1605333756_video.mp4', 50),
+(41, 'Introducción a la Internet', 'Historia del internet', 'Internet es una red de ordenadores conectados en t', '2', '1605334279_video.mp4', 51);
 
 -- --------------------------------------------------------
 
@@ -124,8 +130,9 @@ CREATE TABLE `curso` (
 --
 
 INSERT INTO `curso` (`Id`, `Nombre`, `Descripcion`, `Fecha`, `DuracionCurso`, `Precio`, `Imagen`, `Id_Docente`, `Id_Carrera`) VALUES
-(48, 'Curso de PHP', 'jhgjhgjghjgh', '2020-11-10', 9, '56', '1605026865_Foto de curso.jpg', 45, 12),
-(49, 'Python3', 'ghgfhgfhgfhfghgf', '2020-11-10', 7, '5', '1605041728_Foto de curso.jpg', 45, 12);
+(48, 'Curso de PHP', 'PHP es un lenguaje de programación de propósito general de código del lado del servidor originalment', '2020-11-10', 9, '56', '1605026865_Foto de curso.jpg', 45, 12),
+(50, 'Programacion I', 'El objetivo de la programación es la de crear software, que después será ejecutado de manera directa', '2020-11-30', 2, '15', '1605333662_PhpMyAdmin_logo.png', 46, 13),
+(51, 'Internet I', 'conocimientos básicos para iniciarse en el desarrollo de aplicaciones para ambientes web, en el func', '2020-11-22', 2, '15', '1605334036_html.jpg', 46, 13);
 
 -- --------------------------------------------------------
 
@@ -149,7 +156,8 @@ CREATE TABLE `docente` (
 --
 
 INSERT INTO `docente` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Usuario`, `Contraseña`, `Foto`, `Estado`) VALUES
-(45, 'Carlos', 'Rivera', 'M', 'carlos', '$2y$10$lfCZhAqUZFkVvsYkk6JimO29yiMtxeddERT6vF9e.6zFUoYcGDuFa', '1605026807_Foto de curso.jpg', 1);
+(45, 'Carlos', 'Rivera', 'M', 'carlos', '$2y$10$lfCZhAqUZFkVvsYkk6JimO29yiMtxeddERT6vF9e.6zFUoYcGDuFa', '1605026807_Foto de curso.jpg', 1),
+(46, 'Carolina', 'Vásquez', 'F', 'caro3', '$2y$10$emWUUNGF9u2JZeASdYKGyODqLuEdCTRpkbzRmfonEwZZ1qTdosdb2', '1605333326_Polish_20200110_120346739.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -167,6 +175,7 @@ CREATE TABLE `pago` (
 --
 
 INSERT INTO `pago` (`Id`, `Nombre`) VALUES
+(0, 'Visa'),
 (1, 'PayPal');
 
 -- --------------------------------------------------------
@@ -187,7 +196,8 @@ CREATE TABLE `plan` (
 --
 
 INSERT INTO `plan` (`Id`, `Tipo_Plan`, `Descripcion`, `Precio`) VALUES
-(2, 'Premium', 'Plan con Ilimitado', '45.00');
+(2, 'Premium', 'Plan con Ilimitado', '45.00'),
+(4, 'Platino', 'Este incluye 2 cursos', '25.00');
 
 -- --------------------------------------------------------
 
@@ -207,7 +217,9 @@ CREATE TABLE `tema_contenido` (
 
 INSERT INTO `tema_contenido` (`Id`, `Tema`, `Id_Curso`) VALUES
 (15, 'Introduccion a PHP', 48),
-(16, 'Introduccion a PHP Y SQL', 48);
+(16, 'Introduccion a PHP Y SQL', 48),
+(17, 'Introducción a la programación ', 50),
+(18, 'Introducción a la Internet', 51);
 
 -- --------------------------------------------------------
 
@@ -341,13 +353,13 @@ ALTER TABLE `ventacurso`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `carrera`
 --
 ALTER TABLE `carrera`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `comentario`
@@ -359,31 +371,31 @@ ALTER TABLE `comentario`
 -- AUTO_INCREMENT de la tabla `contenido`
 --
 ALTER TABLE `contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT de la tabla `curso`
 --
 ALTER TABLE `curso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
 --
 ALTER TABLE `plan`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tema_contenido`
 --
 ALTER TABLE `tema_contenido`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
