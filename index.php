@@ -26,9 +26,9 @@ include_once "plantillas/header.php";
         <div class="row">
             <div class="col-md-5">
                 <div class="content-box">
-                    <h2>APRENDE DESDE CERO</h2>
-                    <p>Programar no tiene que ser tan dificil. Aprende los fundamentos desde cero y obtén una base sólida.</p>
-                    <a href="#" class="btn btn-regular">COMENZAR</a>
+                    <h2>¡GRACIAS!</h2>
+                    <p>gracias por hacer que el sueño llamado CODERZOOM sea una realidad</p>
+                    <a href="registrarse.php" class="btn btn-regular">COMIENZA HOY!</a>
                 </div>
             </div>
             <div class="col-md-7">
@@ -43,7 +43,7 @@ include_once "plantillas/header.php";
         <div class="row">
             <div class="col-md-12 col-sm-12">
                 <div class="section-title">
-                    <h1>Conoce más de nuestros contenidos</h1>
+                    <h1>Así funciona CODERZOOM</h1>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -54,38 +54,29 @@ include_once "plantillas/header.php";
                     <div class="ver-info">
                         <p>Programar no tiene que ser tan dificil. Aprende los fundamentos desde cero y obtén una base sólida.</p>
                     </div>
-                    <div class="ver-bottom">
-                        <span class="pricing-dollar">A delante!</span>
-                        <a href="#" class="section-btn ver-btn">Register now</a>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="ver-thumb">
                     <div class="ver-title">
-                        <h3>Estudia a tu ritmo</h3>
+                        <h3>Prepárate para el futuro</h3>
                     </div>
                     <div class="ver-info">
-                        <p>Programar no tiene que ser tan dificil. Aprende los fundamentos desde cero y obtén una base sólida.</p>
+                        <p>Te damos el poder para alcanzar tus sueños a través de la educación</p>
                     </div>
-                    <div class="ver-bottom">
-                        <span class="pricing-dollar">Listo!</span>
-                        <a href="#" class="section-btn ver-btn">Register now</a>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
                 <div class="ver-thumb">
                     <div class="ver-title">
-                        <h3>Estudia a tu ritmo</h3>
+                        <h3>Aprende desde 0</h3>
                     </div>
                     <div class="ver-info">
-                        <p>Programar no tiene que ser tan dificil. Aprende los fundamentos desde cero y obtén una base sólida.</p>
+                        <p>Consigue las habilidades que tu carrera profesional necesita.</p>
                     </div>
-                    <div class="ver-bottom">
-                        <span class="pricing-dollar">Vamos!</span>
-                        <a href="#" class="section-btn ver-btn">Register now</a>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -97,7 +88,7 @@ include_once "plantillas/header.php";
     <div class="container text-center">
         <h2>Conoce más de nuestros contenidos</h2>
         <div class="title-block">
-            <a href="#" class="btn btn-regular">Explorar Más</a>
+            <a href="cursos.php" class="btn btn-regular">Más Cursos</a>
         </div>
     </div>
 </section>
