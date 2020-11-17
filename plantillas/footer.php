@@ -2,40 +2,34 @@
 <footer>
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
-                <h5>Seo Ranking</h5>
+            <div class="col-md-3 text-white">
+                <h5>CODERZOOM</h5>
                 <ul>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Affiliate Program</a></li>
-                    <li><a href="#">Developer API</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Video Tutorials</a></li>
+                    <li>San Salvador - ULS- EL SALVADOR</li>
+
+                </ul>
+            </div>
+            <div class="col-md-3 text-white">
+                <h5>Conéctate con CODERZOOM</h5>
+                <ul>
+                    <li>Email: masinfo_coderzoom@gmail.com</li>
+                    <li>Phone: +503 78451578</li>
+
+                    
+                </ul>
+            </div>
+            <div class="col-md-3 text-white">
+                <h5>Acerca de la plataforma</h5>
+                <ul>
+                    <li> plataforma digital de aprendizaje enfocado al desarrollo de nuevas habilidades profesionales con contenido accesible para cualquier usuario</li>
                 </ul>
             </div>
             <div class="col-md-3">
-                <h5>Main Tools</h5>
-                <ul>
-                    <li><a href="#">Rank Tracker</a></li>
-                    <li><a href="#">Backlink Checker</a></li>
-                    <li><a href="#">Keyword Generator</a></li>
-                    <li><a href="#">Serp Checker</a></li>
-                    <li><a href="#">Site Audit</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Blog</h5>
-                <ul>
-                    <li><a href="#">Get High Quality Backlinks</a></li>
-                    <li><a href="#">Top Google Searches</a></li>
-                    <li><a href="#">Avoid Google Penalties</a></li>
-                    <li><a href="#">White Hat SEO Tips</a></li>
-                    <li><a href="#">Google Trends</a></li>
-                </ul>
-            </div>
-            <div class="col-md-3">
-                <h5>Company</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur scelerisque, tortor nec mattis feugiat, velit purus euismod odio, quis vulputate velit urna.</p>
-                <p><a href="coderzoom@company.com" class="external-links">coderzoom@company.com</a></p>
+                <h5>CODERZOOM</h5>
+                <li><a href="cursos.php">Cursos</a></li>
+                <li><a href="registrarse.php">Registrarse</a></li>
+                <li><a href="iniciarSesion.php">Iniciar sesion</a></li>
+                <li><a href="planes.php">Premium</a></li>
             </div>
         </div> 
         <div class="divider"></div>
