@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-11-2020 a las 06:27:44
--- Versión del servidor: 10.4.6-MariaDB
--- Versión de PHP: 7.3.8
+-- Tiempo de generación: 23-11-2020 a las 19:45:44
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.2.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -144,7 +143,9 @@ CREATE TABLE `docente` (
   `Id` int(11) NOT NULL,
   `Nombres` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Apellidos` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `Descripcion` text COLLATE utf8_spanish_ci NOT NULL,
   `Sexo` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
+  `Email` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `Usuario` varchar(50) COLLATE utf8_spanish_ci NOT NULL,
   `Contraseña` varchar(150) COLLATE utf8_spanish_ci NOT NULL,
   `Foto` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
@@ -155,9 +156,10 @@ CREATE TABLE `docente` (
 -- Volcado de datos para la tabla `docente`
 --
 
-INSERT INTO `docente` (`Id`, `Nombres`, `Apellidos`, `Sexo`, `Usuario`, `Contraseña`, `Foto`, `Estado`) VALUES
-(45, 'Carlos', 'Rivera', 'M', 'carlos', '$2y$10$lfCZhAqUZFkVvsYkk6JimO29yiMtxeddERT6vF9e.6zFUoYcGDuFa', '1605026807_Foto de curso.jpg', 1),
-(46, 'Carolina', 'Vásquez', 'F', 'caro3', '$2y$10$emWUUNGF9u2JZeASdYKGyODqLuEdCTRpkbzRmfonEwZZ1qTdosdb2', '1605333326_Polish_20200110_120346739.jpg', 1);
+INSERT INTO `docente` (`Id`, `Nombres`, `Apellidos`, `Descripcion`, `Sexo`, `Email`, `Usuario`, `Contraseña`, `Foto`, `Estado`) VALUES
+(45, 'Carlos', 'Rivera', '', 'M', '', 'carlos', '$2y$10$lfCZhAqUZFkVvsYkk6JimO29yiMtxeddERT6vF9e.6zFUoYcGDuFa', '1605026807_Foto de curso.jpg', 1),
+(46, 'Carolina', 'Vásquez', 'Desarrollador Front-End', 'F', 'caro@gmail.com', 'caro3', '$2y$10$OphYeA.anpFrhDLvePERzOV45X1eQXBeNfSf922e0zXCFxnf4Nfla', '1605333326_Polish_20200110_120346739.jpg', 1),
+(47, 'Jose', 'Deo', 'Desarrollador Back-End', 'M', 'admin@admin', 'joseadmin', '$2y$10$NI9Eu4QWYiNifvg3boso5OjSZgmOuRhqCG3nSqTHUeSIsRikJrAdK', '1606153124_Proyecto Portón Automático.png', 1);
 
 -- --------------------------------------------------------
 
@@ -265,6 +267,18 @@ CREATE TABLE `ventacurso` (
   `Id_Usuario` int(11) NOT NULL,
   `Id_Curso` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `ventacurso`
+--
+
+INSERT INTO `ventacurso` (`Id`, `Correo`, `ClaveTransaccion`, `PaypalDato`, `Fecha`, `Estado`, `Id_Usuario`, `Id_Curso`) VALUES
+(40, '', '', '', '2020-11-18 04:52:58', 'pagado', 69, 48),
+(41, '', '', '', '2020-11-18 04:52:58', 'pagado', 69, 50),
+(42, '', '', '', '2020-11-18 04:52:58', 'pagado', 69, 51),
+(43, '', '', '', '2020-11-23 18:29:48', 'pagado', 69, 48),
+(44, '', '', '', '2020-11-23 18:29:48', 'pagado', 69, 50),
+(45, '', '', '', '2020-11-23 18:29:48', 'pagado', 69, 51);
 
 --
 -- Índices para tablas volcadas
@@ -383,7 +397,7 @@ ALTER TABLE `curso`
 -- AUTO_INCREMENT de la tabla `docente`
 --
 ALTER TABLE `docente`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `plan`
@@ -407,7 +421,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `ventacurso`
 --
 ALTER TABLE `ventacurso`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- Restricciones para tablas volcadas
