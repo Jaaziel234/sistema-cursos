@@ -43,16 +43,19 @@
             <label class="control-label">CLAVE</label>
             <input name="clave" class="form-control" type="password" placeholder="Password">
           </div>
+          <!----
           <div class="form-group">
             <div class="utility">
               <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Recuperar contraseña ?</a></p>
             </div>
           </div>
+          ----->
           <div class="form-group btn-container">
             <button class="btn btn-primary btn-block" type="submit"><i class="fa fa-sign-in fa-lg fa-fw"></i>INGRESAR</button>
           </div>
         </form>
-        <form class="forget-form" action="index.html">
+        <!----
+        <form class="forget-form" action="">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>Forgot Password ?</h3>
           <div class="form-group">
             <label class="control-label">EMAIL</label>
@@ -65,6 +68,7 @@
             <p class="semibold-text mb-0"><a href="#" data-toggle="flip"><i class="fa fa-angle-left fa-fw"></i> Volver a login</a></p>
           </div>
         </form>
+        --->
       </div>
     </section>
     <!-- Essential javascripts for application to work-->

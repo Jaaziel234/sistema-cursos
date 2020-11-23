@@ -1,5 +1,10 @@
 <?php
+session_start();
 include_once 'modulos/cursos.php';
+//Validacion de sesion
+if (!isset($_SESSION['usuario'])){
+	header("Location:index.php");
+}
 //Cabecera de sitio web
 include_once "plantillas/header.php";
 //Guardando el ID del usuario de su session

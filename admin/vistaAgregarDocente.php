@@ -33,6 +33,9 @@ include_once "templates/sidebar.php";
                                 <input name="Apellidos" class="form-control" id="Apellidos" type="text" placeholder="Apellidos">
                             </div>
                             <div class="form-group">
+                                <textarea name="descripcionDocente" id="" cols="30" rows="10" class="form-control" placeholder="Descripción o profesión"></textarea>
+                            </div>
+                            <div class="form-group">
                                 <label for="Sexo">Seleccione su sexo</label>
                                 <select class="form-control" id="Sexo" name="Sexo" required="">
                                     <option value=""></option>
@@ -40,6 +43,12 @@ include_once "templates/sidebar.php";
                                     <option value="F">Femenino</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input name="email" class="form-control" id="email" type="email" placeholder="E-mail" required="">
+                            </div>
+
                             <div class="form-group">
                                 <label for="Usuario">Usuario</label>
                                 <input name="Usuario" class="form-control" id="Usuario" type="text" placeholder="User">

@@ -29,7 +29,9 @@ include_once "templates/header.php";?>
                                 <th>ID</th>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
+                                <th>Descripción</th>
                                 <th>Sexo</th>
+                                <th>E-mail</th>
                                 <th>Usuario</th>
                                 <th>Contraseña</th>
                                 <th>Foto</th>
@@ -43,7 +45,9 @@ include_once "templates/header.php";?>
                                 <th><?php echo $data['Id'] ?></th>
                                 <th><?php echo $data['Nombres'] ?></th>
                                 <th><?php echo $data['Apellidos'] ?></th>
+                                <th><?php echo $data['Descripcion'] ?></th>
                                 <th><?php echo $data['Sexo'] ?></th>
+                                <th><?php echo $data['Email'] ?></th>
                                 <th><?php echo $data['Usuario'] ?></th>
                                 <th><?php echo $data['Contraseña'] ?></th>
                                 <th><img style="width: 70px" src="./recursos/images/fotoDocente/<?php echo $data['Foto'] ?>"></th>
@@ -63,7 +67,9 @@ include_once "templates/header.php";?>
                                         <input hidden="" type="number" name="Id" value="<?php echo $data['Id']; ?>">
                                         <input hidden="" type="text" name="Nombres" value="<?php echo $data['Nombres'] ?>">
                                         <input hidden="" type="text" name="Apellidos" value="<?php echo $data['Apellidos']; ?>">
+                                        <input hidden="" type="text" name="descripcion" value="<?php echo $data['Descripcion']; ?>">
                                         <input hidden="" type="text" name="Sexo" value="<?php echo $data['Sexo']; ?>">
+                                        <input hidden="" type="text" name="email" value="<?php echo $data['Email']; ?>">
                                         <input hidden="" type="text" name="Usuario" value="<?php echo $data['Usuario']; ?>">
                                         <input hidden="" type="password" name="Clave" value="<?php echo $data['Contraseña']; ?>">
                                         <input hidden="" type="number" name="Estado" value="<?php echo $data['Estado']; ?>">

@@ -7,8 +7,8 @@ include_once 'modulos/videos.php';
 include_once 'modulos/comentarios.php';
 //Id del curso
 $Id = isset($_GET['id']) ? $_GET['id'] : '';
-//Validacion de sesion
-if(!isset($_SESSION['usuario'])){
+//Validacion de seguridad, no permitir acceder a este fichero sin ID de curso
+if ($Id === ''){
 	header("Location:index.php");
 }
 //Datos de sesion->ID

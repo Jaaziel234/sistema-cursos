@@ -1,7 +1,12 @@
 <?php
+   session_start();
+   //Validacion de sesion
+   if (!isset($_SESSION['usuario'])){
+      header("Location:index.php");
+   }
    //Cabecera de sitio web
    include_once "plantillas/header.php";
-   ?>
+?>
 <section class="profile">
    <div class="container">
       <div class="row pt-5">

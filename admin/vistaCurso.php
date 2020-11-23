@@ -21,7 +21,7 @@
         <div class="col-md-12">
             <div class="tile">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-8 offset-md-2">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <input type="hidden" name="Id" value="<?php echo $Id ?>">
                             <div class="form-group">

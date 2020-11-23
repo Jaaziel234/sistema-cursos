@@ -4,11 +4,17 @@ include_once "../../config/conexion.php";
 $Id = isset($_POST['Id'])? $_POST['Id'] : ""; //Sirve para actualizar
 $nombres = isset($_POST['Nombres']) ? $_POST['Nombres'] : "";
 $apellidos = isset($_POST['Apellidos']) ? $_POST['Apellidos'] : "";
+//Nuevos campos
+$descripcion = isset($_POST['descripcionDocente']) ? $_POST['descripcionDocente'] : '';
 $sexo = isset($_POST['Sexo']) ? $_POST['Sexo'] : "";
 $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : "";
+
+$email = isset($_POST['email']) ? $_POST['email'] : "";
+
 $clave = isset($_POST['Clave']) ? $_POST['Clave'] : "";
 //Encriptando clave
 $claveHash = password_hash($clave, PASSWORD_DEFAULT);
+
 $foto = isset($_FILES['Foto']['name']) ? $_FILES['Foto'] : "";
 $estado = isset($_POST['Estado']) ? $_POST['Estado'] : "";
 //Input segun la opcion hacer
@@ -28,7 +34,7 @@ switch ($accion) {
             echo "<script>alert('Ya existe este usuario')</script>";
             header("Location:../vistaAgregarDocente.php");
         }else{
-            $sql = "INSERT INTO docente (Nombres, Apellidos, Sexo, Usuario, Contraseña, Foto, Estado) VALUES(?,?,?,?,?,?,?)";
+            $sql = "INSERT INTO docente (Nombres, Apellidos,Descripcion, Sexo,Email,Usuario,Contraseña,Foto,Estado) VALUES(?,?,?,?,?,?,?,?,?)";
             //Agregando la fecha y moviendo el archivo a una carpeta especifica
             $fecha = new DateTime();
             //Seleecionamos el nombre del archivo
@@ -43,7 +49,7 @@ switch ($accion) {
             //Consulta SQL
             $sentencia = $pdo->prepare($sql);
             //Pasando los datos
-            $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$claveHash,$nombreFoto,$estado));
+            $sentencia->execute(array($nombres,$apellidos,$descripcion,$sexo,$email,$usuario,$claveHash,$nombreFoto,$estado));
             //Comprando si se insertaron
             if ($sentencia){
                 header("Location:../vistaAgregarDocente.php");
@@ -82,9 +88,10 @@ switch ($accion) {
         if(isset($_GET['update'])){
             $estado = 1;
         }
-        $sql = "UPDATE docente SET Nombres=?,Apellidos=?,Sexo=?,Usuario=?,Contraseña=?,Estado=? WHERE Id=?";
+        
+        $sql = "UPDATE docente SET Nombres=?,Apellidos=?,Descripcion=?,Sexo=?,Email=?,Usuario=?,Contraseña=?,Estado=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
-        $sentencia->execute(array($nombres,$apellidos,$sexo,$usuario,$claveHash,$estado,$Id));
+        $sentencia->execute(array($nombres,$apellidos,$descripcion,$sexo,$email,$usuario,$claveHash,$estado,$Id));
         //Movemos la imagen
         $fecha = new DateTime();
         //Seleecionamos el nombre del archivo

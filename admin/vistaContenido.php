@@ -25,7 +25,7 @@ $id_Curso = isset($_GET['id']) ? $_GET['id'] : '';
         <div class="col-md-12">
             <div class="tile">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-8 offset-md-2">
                         <form action="" method="POST" enctype="multipart/form-data">
                             <!---Envio de ID para permanecer las vista -->
                             <input type="hidden" name="Id_Curso" value="<?php echo $id_Curso ?>">

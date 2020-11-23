@@ -8,6 +8,10 @@
 $Id = isset($_POST['Id']) ? $_POST['Id'] : "";
 $nombres = isset($_POST['Nombres']) ? $_POST['Nombres'] : "";
 $apellidos = isset($_POST['Apellidos']) ? $_POST['Apellidos'] : "";
+
+$descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : "";
+$email = isset($_POST['email']) ? $_POST['email'] : "";
+
 $sexo = isset($_POST['Sexo']) ? $_POST['Sexo'] : "";
 $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : "";
 $clave = isset($_POST['Clave']) ? $_POST['Clave'] : "";
@@ -33,6 +37,11 @@ $estado = isset($_POST['Estado']) ? $_POST['Estado'] : "";
                                 <label for="Apellidos">Apellidos</label>
                                 <input name="Apellidos" class="form-control" id="Apellidos" type="text" value="<?php echo $apellidos; ?>">
                             </div>
+
+                            <div class="form-group">
+                                <textarea name="descripcionDocente" id="" cols="30" rows="10" class="form-control" placeholder="Descripción o profesión"><?php echo $descripcion; ?></textarea>
+                            </div>
+
                             <div class="form-group">
                                 <label for="Sexo">Seleccione su sexo</label>
                                 <select class="form-control" id="Sexo" name="Sexo" required="">
@@ -41,13 +50,19 @@ $estado = isset($_POST['Estado']) ? $_POST['Estado'] : "";
                                     <option value="F">Femenino</option>
                                 </select>
                             </div>
+
+                            <div class="form-group">
+                                <label for="email">E-mail</label>
+                                <input name="email" class="form-control" id="email" type="email" placeholder="E-mail" required="" value="<?php echo $email; ?>">
+                            </div>
+
                             <div class="form-group">
                                 <label for="Usuario">Usuario</label>
                                 <input name="Usuario" class="form-control" id="Usuario" type="text" value="<?php echo $usuario; ?>">
                             </div>
                             <div class="form-group">
                                 <label for="Clave">Contraseña</label>
-                                <input name="Clave" class="form-control" id="Clave" type="password" value="<?php echo $clave; ?>">
+                                <input name="Clave" class="form-control" id="Clave" type="password" value="">
                             </div>
                             <div class="form-group">
                                 <label for="Foto">Foto</label>

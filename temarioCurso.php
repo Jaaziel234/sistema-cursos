@@ -1,9 +1,13 @@
 <?php
-include_once 'modulos/cursos.php';
-//Cabecera de sitio web
-include_once "plantillas/header.php";
-//Recepción de ID de curso
-$Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
+    include_once 'modulos/cursos.php';
+    //Cabecera de sitio web
+    include_once "plantillas/header.php";
+    //Recepción de ID de curso
+    $Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
+    //Validacion de GET en temarioCurso.php
+    if ($Id === ""){
+        header("Location:index.php");
+    }
 ?>
 <header class="bg-dark section-info" style="margin-top:75px">
     <div class="container text-white">
@@ -45,7 +49,7 @@ $Id = isset($_GET['id_curso']) ? $_GET['id_curso'] : '';
                     <img class="img-thumbnail rounded-circle" src="./admin/recursos/images/fotoDocente/<?php echo $curso['Foto']; ?>" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6>Creado por <?php echo $curso['Nombres']; ?></h6>
-                        <p class="card-text"></p>
+                        <p class="card-text"><?php echo $curso['Descripcion']; ?></p>
                     </div>
                 </div>
             </div>
