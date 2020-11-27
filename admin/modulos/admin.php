@@ -6,6 +6,15 @@ $apellidosAdmin = isset($_POST['apellidosAdmin']) ? $_POST['apellidosAdmin'] : "
 $usuarioAdmin = isset($_POST['usuarioAdmin']) ? $_POST['usuarioAdmin'] : "";
 $claveAdmin = isset($_POST['claveAdmin']) ? $_POST['claveAdmin'] : "";
 
+//Verificando clave para actualizar
+if (strlen($claveAdmin) > 20 ){
+    $claveHash = $claveAdmin;
+}else{
+    //Encriptando clave
+    $clave_hash = password_hash($claveAdmin, PASSWORD_DEFAULT);
+    $claveHash = $clave_hash;
+}
+
 //Input segun la opcion hacer
 $accion = isset($_POST['accion']) ? $_POST['accion'] : "";
 switch ($accion) {
@@ -27,7 +36,7 @@ switch ($accion) {
             //Consulta SQL
             $sentencia = $pdo->prepare($sql);
             //Pasando los dat90os
-            $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,password_hash($claveAdmin, PASSWORD_DEFAULT)));
+            $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,$claveHash));
             //Comprando si se insertaron
             if ($sentencia){
                 echo "<script>window.setTimeout(function() { window.location = './vistaAdmin.php' }, 10);</script>";
@@ -51,7 +60,7 @@ switch ($accion) {
     case 'Actualizar':
         $sql = "UPDATE administrador SET Nombres=?,Apellidos=?,Usuario=?,Contraseña=? WHERE Id=?";
         $sentencia = $pdo->prepare($sql);
-        $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,password_hash($claveAdmin, PASSWORD_DEFAULT),$Id));
+        $sentencia->execute(array($nombresAdmin,$apellidosAdmin,$usuarioAdmin,$claveHash,$Id));
 
         echo "<script>window.setTimeout(function() { window.location = './vistaAdmin.php' }, 10);</script>";
 
