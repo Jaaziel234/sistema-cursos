@@ -1,4 +1,5 @@
 <?php
+    //Conexion a BD
    include_once ("../config/conexion.php");
    //Guardamos los datos recibido de POST -> add-teacher.php front-end
    $Id = isset($_POST['Id'])? $_POST['Id'] : ""; //Sirve para actualizar
@@ -8,6 +9,7 @@
    $fechaNacimiento = isset($_POST['Fecha_nacimiento']) ? $_POST['Fecha_nacimiento'] : "";
    $correo = isset($_POST['Correo']) ? $_POST['Correo'] : "";
    $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : "";
+
    $contraseña = isset($_POST['Contraseña']) ? $_POST['Contraseña'] : "";
    $foto = isset($_FILES['Foto']['name']) ? $_FILES['Foto'] : "";
    
@@ -16,10 +18,13 @@
    switch ($accion) {
            
        case 'Actualizar':
-           //Sirve para actualizar desde su perfil y validar si es el docente su estado siempre sera activo
-           if(isset($_GET['update'])){
-               
-           }
+          if (strlen($contraseña) > 20 ){
+            $contraseña = $contraseña;
+          }else{
+            $clave_hash = password_hash($contraseña, PASSWORD_DEFAULT);
+            $contraseña = $clave_hash;
+          }
+
            $sql = "UPDATE usuario SET Nombres=?,Apellidos=?,Sexo=?,Fecha_nacimiento=?,Correo=?,Usuario=?,Contraseña=?,Foto=?WHERE Id=?";
            $sentencia = $pdo->prepare($sql);
            $sentencia->execute(array($nombres,$apellidos,$sexo,$fechaNacimiento,$correo,$usuario,$contraseña,$foto,$Id));
@@ -51,14 +56,9 @@
                $sentencia = $pdo->prepare($sql);
                $sentencia->execute(array($nombreFoto,$Id)); 
            }
-           //Si existe esta peticion redireccionar a 
-           if(isset($_GET['update'])){
-               echo "<script>alert('Vuelve a iniciar sesión para ver los cambios')</script>";
+              echo "<script>alert('Vuelve a iniciar sesión para ver los cambios')</script>";
    
-               header("Location../index.php");
-           }else{
-               header("Location:../index.php");
-           }
+              header("Location../index.php");
    
            break;
        default:
