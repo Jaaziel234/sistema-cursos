@@ -12,8 +12,14 @@ $usuario = isset($_POST['Usuario']) ? $_POST['Usuario'] : "";
 $email = isset($_POST['email']) ? $_POST['email'] : "";
 
 $clave = isset($_POST['Clave']) ? $_POST['Clave'] : "";
-//Encriptando clave
-$claveHash = password_hash($clave, PASSWORD_DEFAULT);
+//Verificando clave para actualizar
+if (strlen($clave) > 20 ){
+    $claveHash = $clave;
+}else{
+    //Encriptando clave
+    $clave_hash = password_hash($clave, PASSWORD_DEFAULT);
+    $claveHash = $clave_hash;
+}
 
 $foto = isset($_FILES['Foto']['name']) ? $_FILES['Foto'] : "";
 $estado = isset($_POST['Estado']) ? $_POST['Estado'] : "";
