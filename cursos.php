@@ -3,8 +3,8 @@ include_once 'modulos/cursos.php';
 //Cabecera de sitio web
 include_once "plantillas/header.php";
 ?>
-<section>
-	<article class="container mb-4">
+<section class="container">
+	<article class="mb-4">
 		<h3 class="text-center">Cursos disponibles</h3>
 	</article>
 	<div class="row">
