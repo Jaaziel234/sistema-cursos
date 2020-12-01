@@ -6,7 +6,7 @@
                 <h5>CODERZOOM</h5>
                 <ul>
                     <li>San Salvador - ULS- EL SALVADOR</li>
-
+                    <li>Contáctame para impartir un curso: coderzoom@gmail.com</li>
                 </ul>
             </div>
             <div class="col-md-3 text-white">
