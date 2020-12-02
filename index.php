@@ -105,7 +105,7 @@ include_once "plantillas/header.php";
                     <h5 class="card-title"><?php echo $curso['Nombre'] ?></h5>
                     <p class="card-text"><?php echo $curso['Descripcion'] ?></p>
                     <div class="list-group list-group-flush m-0">
-                        <li class="list-group-item">$<?php echo number_format($curso['Precio'],2) ?> | <s>$<?php echo number_format($curso['Precio'] + 5,2) ?></s> </li>
+                        <li class="list-group-item">Gratis | <s>$<?php echo number_format($curso['Precio'] + 5,2) ?></s> </li>
                     </div>
                     <a href="temarioCurso.php?id_curso=<?php echo $curso['Id']; ?>" class="btn btn-primary">Explorar curso</a>
                 </div>

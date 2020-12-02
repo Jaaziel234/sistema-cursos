@@ -24,7 +24,7 @@ $idUsuario = isset($_SESSION['usuario']) ? $_SESSION['usuario']['Id'] : '';
 			            <img src="./admin/recursos/images/imgCurso/<?php echo $curso['Imagen'] ?>" class="card-img-top" alt="...">
 			            <div class="card-body">
 			                <h5 class="card-title"><?php echo $curso['Nombre'] ?></h5>
-			                <p class="card-text"><?php echo $curso['Descripcion'] ?></p>
+			                <p class="card-text"><?php echo $curso['cursoDescripcion'] ?></p>
 
 			                <div class="list-group list-group-flush m-0">
 			                    <li class="list-group-item">Comprado&Acceso de por vida </li>

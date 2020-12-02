@@ -18,7 +18,7 @@
 
                 <h3><?php echo $curso['Nombre']; ?></h3>
                 <p class="text-white">Fecha de lanzamiento: <?php echo $curso['Fecha']; ?></p>
-                <p class="text-white">Descripción: <?php echo $curso['Descripcion']; ?></p>
+                <p class="text-white">Descripción: <?php echo $curso['cursoDescripcion']; ?></p>
                 <p class="text-white">Duracíón aproximado: <?php echo $curso['DuracionCurso']; ?> hrs</p>
                 <a class="btn btn-primary" href="validacion.php?id=<?php echo $curso['Id']; ?>" >¡Toma el curso ahora!</a>
             </div>
